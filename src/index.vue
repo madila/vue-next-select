@@ -322,7 +322,7 @@ const VueSelect = {
           Object.keys(normalizedModelValue.value).some(
             index =>
               normalizedModelValue.value[index] !==
-              getOptionByValue(options.value, props.modelValue[index], { valueBy: valueBy.value }),
+              getOptionByValue(optionsWithInfo.value, props.modelValue[index], { valueBy: valueBy.value }),
           )
         )
           return false
@@ -331,7 +331,7 @@ const VueSelect = {
         if (normalizedModelValue.value.length === 1 && props.modelValue === props.emptyModelValue) return false
         if (
           normalizedModelValue.value[0] !==
-          getOptionByValue(options.value, props.modelValue, { valueBy: valueBy.value })
+          getOptionByValue(optionsWithInfo.value, props.modelValue, { valueBy: valueBy.value })
         )
           return false
       }
@@ -346,9 +346,9 @@ const VueSelect = {
         ? []
         : [props.modelValue]
       for (const value of modelValue) {
-        const option = getOptionByValue(options.value, value, { valueBy: valueBy.value })
+        const option = getOptionByValue(optionsWithInfo.value, value, { valueBy: valueBy.value })
         // guarantee options has modelValue
-        if (hasOption(options.value, option, { valueBy: valueBy.value }) === false) continue
+        if (hasOption(optionsWithInfo.value, option, { valueBy: valueBy.value }) === false) continue
         normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
           max: Infinity,
           valueBy: valueBy.value,
@@ -380,10 +380,10 @@ const VueSelect = {
 
     // guarantee options has modelValue
     watch(
-      () => options.value,
+      () => optionsWithInfo.value,
       () => {
         const selectedValueSet = new Set(normalizedModelValue.value.map(option => valueBy.value(option)))
-        normalizedModelValue.value = options.value.filter(option => selectedValueSet.has(valueBy.value(option)))
+        normalizedModelValue.value = optionsWithInfo.value.filter(option => selectedValueSet.has(valueBy.value(option)))
       },
       { deep: true },
     )
@@ -434,6 +434,7 @@ const VueSelect = {
       return options.value.map((option, index) => ({
         key: trackBy.value(option),
         label: labelBy.value(option),
+        value: valueBy.value(option),
         selected: selectedValueSet.has(valueBy.value(option)),
         disabled: disabledBy.value(option),
         visible: visibleValueSet.has(valueBy.value(option)),
@@ -448,11 +449,12 @@ const VueSelect = {
     const dataAttrs = computed(() => ({
       'data-is-focusing': isFocusing.value,
       'data-visible-length': optionsWithInfo.value.filter(option => option.visible && option.hidden === false).length,
-      'data-not-selected-length': options.value.length - optionsWithInfo.value.filter(option => option.selected).length,
+      'data-not-selected-length':
+        optionsWithInfo.value.length - optionsWithInfo.value.filter(option => option.selected).length,
       'data-selected-length': optionsWithInfo.value.filter(option => option.selected).length,
       'data-addable': optionsWithInfo.value.filter(option => option.selected).length < max.value,
       'data-removable': optionsWithInfo.value.filter(option => option.selected).length > min.value,
-      'data-total-length': options.value.length,
+      'data-total-length': optionsWithInfo.value.length,
       'data-multiple': props.multiple,
     }))
     provide('dataAttrs', dataAttrs)
