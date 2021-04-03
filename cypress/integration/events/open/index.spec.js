@@ -47,7 +47,7 @@ context('open event', () => {
         window.removeEventListener('open-custom-event', setReject)
         window.addEventListener('open-custom-event', setReject)
       })
-      cy.get('.vue-tags').children().first().click()
+      cy.get('.vue-tags .icon').first().click()
       cy.then(finish)
     })
   })

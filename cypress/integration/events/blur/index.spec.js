@@ -47,7 +47,7 @@ context('blur event', () => {
         window.removeEventListener('blur-custom-event', setReject)
         window.addEventListener('blur-custom-event', setReject)
       })
-      cy.get('.vue-tags').children().first().click()
+      cy.get('.vue-tags .icon').first().click()
       cy.then(finish)
     })
   })
