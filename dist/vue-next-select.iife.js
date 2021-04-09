@@ -107,6 +107,10 @@ this.VueNextSelect = (function (vue) {
         required: true,
         type: Boolean
       },
+      inputName: {
+        "default": '',
+        type: String
+      },
       tabindex: {
         required: true,
         type: Number
@@ -120,12 +124,12 @@ this.VueNextSelect = (function (vue) {
     setup: function setup(props, context) {
       var handleInput = function handleInput(event) {
         context.emit('input', event);
-        context.emit('update:modelValue', event.target.value);
+        context.emit('update:modelValue', props.inputName, event.target.value);
       };
 
       var handleChange = function handleChange(event) {
         context.emit('change', event);
-        context.emit('update:modelValue', event.target.value);
+        context.emit('update:modelValue', props.inputName, event.target.value);
       };
 
       var handleFocus = function handleFocus(event) {
@@ -169,6 +173,7 @@ this.VueNextSelect = (function (vue) {
       modelValue: $props.modelValue,
       placeholder: $props.placeholder,
       disabled: $props.disabled,
+      name: "inputName",
       onInput: _cache[1] || (_cache[1] = function () {
         return $setup.handleInput && $setup.handleInput.apply($setup, arguments);
       }),

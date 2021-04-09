@@ -6,6 +6,7 @@
       :modelValue="modelValue"
       :placeholder="placeholder"
       :disabled="disabled"
+      name="inputName"
       @input="handleInput"
       @change="handleChange"
       @focus="handleFocus"
@@ -37,6 +38,10 @@ export default {
       required: true,
       type: Boolean,
     },
+    inputName: {
+      default: '',
+      type: String
+    },
     tabindex: {
       required: true,
       type: Number,
@@ -50,11 +55,11 @@ export default {
   setup(props, context) {
     const handleInput = event => {
       context.emit('input', event)
-      context.emit('update:modelValue', event.target.value)
+      context.emit('update:modelValue', props.inputName, event.target.value)
     }
     const handleChange = event => {
       context.emit('change', event)
-      context.emit('update:modelValue', event.target.value)
+      context.emit('update:modelValue', props.inputName, event.target.value)
     }
     const handleFocus = event => {
       context.emit('focus', event)
