@@ -1152,6 +1152,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
     placeholder: _ctx.innerPlaceholder,
+    name: "inputName",
     readonly: "",
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.focus && _ctx.focus.apply(_ctx, arguments);
@@ -1218,6 +1219,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _ctx.handleFocusForInput,
     onBlur: _ctx.handleBlurForInput,
     onEscape: _ctx.blur,
+    name: "inputName",
     autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable,
     tabindex: _ctx.tabindex
   }, null, 8
@@ -1252,6 +1254,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onFocus: _ctx.handleFocusForInput,
     onBlur: _ctx.handleBlurForInput,
     onEscape: _ctx.blur,
+    name: "inputName",
     tabindex: _ctx.tabindex,
     autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable
   }, {
