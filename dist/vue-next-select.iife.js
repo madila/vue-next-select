@@ -415,6 +415,7 @@ this.VueNextSelect = (function (vue) {
     var valueBy = createComputedForGetterFunction(vue.toRef(props, 'valueBy'));
     var disabledBy = createComputedForGetterFunction(vue.toRef(props, 'disabledBy'));
     var groupBy = createComputedForGetterFunction(vue.toRef(props, 'groupBy'));
+    var inputName = createComputedForGetterFunction(vue.toRef(props, 'inputName'));
     var min = vue.computed(function () {
       return props.multiple ? props.min : Math.min(1, props.min);
     });
@@ -429,7 +430,8 @@ this.VueNextSelect = (function (vue) {
       groupBy: groupBy,
       min: min,
       max: max,
-      options: options
+      options: options,
+      inputName: inputName
     };
   });
 
