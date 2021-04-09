@@ -41,7 +41,9 @@
           :class="{ active: isFocusing }"
           @click="toggle"
           @mousedown.prevent.stop
-        ></span>
+        >
+          <slot name="icon"></slot>
+        </span>
       </template>
 
       <template v-else>
@@ -71,7 +73,9 @@
           :class="{ active: isFocusing }"
           @click="toggle"
           @mousedown.prevent.stop
-        ></span>
+        >
+          <slot name="icon"></slot>
+        </span>
       </template>
     </div>
 

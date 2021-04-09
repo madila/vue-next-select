@@ -1193,7 +1193,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
     }),
     onMousedown: _cache[3] || (_cache[3] = withModifiers(function () {}, ["prevent", "stop"]))
-  }, null, 34
+  }, [renderSlot(_ctx.$slots, "icon")], 34
   /* CLASS, HYDRATE_EVENTS */
   )], 64
   /* STABLE_FRAGMENT */
@@ -1227,7 +1227,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
     }),
     onMousedown: _cache[6] || (_cache[6] = withModifiers(function () {}, ["prevent", "stop"]))
-  }, null, 34
+  }, [renderSlot(_ctx.$slots, "icon")], 34
   /* CLASS, HYDRATE_EVENTS */
   ), [[vShow, _ctx.loading === false]])], 64
   /* STABLE_FRAGMENT */
