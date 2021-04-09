@@ -789,7 +789,7 @@ this.VueNextSelect = (function (vue) {
         if (props.multiple) {
           context.emit('update:modelValue', props.inputName, selectedValues);
         } else {
-          if (selectedValues.length) context.emit('update:modelValue', selectedValues[0]);else context.emit('update:modelValue', props.inputName, props.emptyModelValue);
+          if (selectedValues.length) context.emit('update:modelValue', props.inputName, selectedValues[0]);else context.emit('update:modelValue', props.inputName, props.emptyModelValue);
         }
       };
 
@@ -841,7 +841,7 @@ this.VueNextSelect = (function (vue) {
               min: min.value,
               valueBy: valueBy.value
             });
-            context.emit('removed', option);
+            context.emit('removed', props.inputName, option);
           });
         } else {
           option.value.forEach(function (value) {
@@ -855,7 +855,7 @@ this.VueNextSelect = (function (vue) {
               max: max.value,
               valueBy: valueBy.value
             });
-            context.emit('selected', option);
+            context.emit('selected', props.inputName, option);
           });
         }
       };
@@ -870,7 +870,7 @@ this.VueNextSelect = (function (vue) {
             min: min.value,
             valueBy: valueBy.value
           });
-          context.emit('removed', option);
+          context.emit('removed', props.inputName, option);
         } else {
           if (!props.multiple) {
             var removingOption = normalizedModelValue.value[0];
@@ -878,14 +878,14 @@ this.VueNextSelect = (function (vue) {
               min: 0,
               valueBy: valueBy.value
             });
-            context.emit('removed', removingOption);
+            context.emit('removed', props.inputName, removingOption);
           }
 
           normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
             max: max.value,
             valueBy: valueBy.value
           });
-          context.emit('selected', option);
+          context.emit('selected', props.inputName, option);
         }
       };
 
