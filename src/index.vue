@@ -247,9 +247,8 @@ const VueSelect = {
     'search:blur',
   ],
   setup(props, context) {
-    const { labelBy, valueBy, disabledBy, groupBy, min, max, options } = normalize(props)
+    const { labelBy, valueBy, disabledBy, groupBy, min, max, options, inputName } = normalize(props)
 
-    const inputName = props.inputName;
     const instance = getCurrentInstance()
     const wrapper = ref()
     const dropdown = ref()
@@ -257,7 +256,7 @@ const VueSelect = {
     const inputEl = computed(() => input.value?._.refs.input)
     const isFocusing = ref(false)
 
-    console.log(inputName);
+    console.log(props, input, inputEl, inputName);
     watch(
       () => isFocusing.value,
       () => {

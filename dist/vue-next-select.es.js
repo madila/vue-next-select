@@ -627,9 +627,9 @@ var VueSelect = {
         groupBy = _normalize.groupBy,
         min = _normalize.min,
         max = _normalize.max,
-        options = _normalize.options;
+        options = _normalize.options,
+        inputName = _normalize.inputName;
 
-    var inputName = props.inputName;
     getCurrentInstance();
     var wrapper = ref();
     var dropdown = ref();
@@ -640,7 +640,7 @@ var VueSelect = {
       return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
     });
     var isFocusing = ref(false);
-    console.log(inputName);
+    console.log(props, input, inputEl, inputName);
     watch(function () {
       return isFocusing.value;
     }, function () {
