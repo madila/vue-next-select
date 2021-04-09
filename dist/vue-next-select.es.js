@@ -121,14 +121,17 @@ var script$2 = {
   },
   emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'escape'],
   setup: function setup(props, context) {
+    var inputName = props.inputName;
+    console.log(inputName);
+
     var handleInput = function handleInput(event) {
       context.emit('input', event);
-      context.emit('update:modelValue', props.inputName, event.target.value);
+      context.emit('update:modelValue', inputName, event.target.value);
     };
 
     var handleChange = function handleChange(event) {
       context.emit('change', event);
-      context.emit('update:modelValue', props.inputName, event.target.value);
+      context.emit('update:modelValue', inputName, event.target.value);
     };
 
     var handleFocus = function handleFocus(event) {
@@ -157,6 +160,7 @@ var script$2 = {
       handleChange: handleChange,
       handleFocus: handleFocus,
       handleBlur: handleBlur,
+      inputName: inputName,
       input: input,
       handleEscape: handleEscape
     };
@@ -172,7 +176,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: $props.modelValue,
     placeholder: $props.placeholder,
     disabled: $props.disabled,
-    name: "inputName",
+    name: $setup.inputName,
     onInput: _cache[1] || (_cache[1] = function () {
       return $setup.handleInput && $setup.handleInput.apply($setup, arguments);
     }),
@@ -192,7 +196,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     autofocus: $props.autofocus
   }, null, 40
   /* PROPS, HYDRATE_EVENTS */
-  , ["modelValue", "placeholder", "disabled", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]);
+  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]);
 }
 
 script$2.render = render$3;
@@ -623,9 +627,9 @@ var VueSelect = {
         groupBy = _normalize.groupBy,
         min = _normalize.min,
         max = _normalize.max,
-        options = _normalize.options,
-        inputName = _normalize.inputName;
+        options = _normalize.options;
 
+    var inputName = props.inputName;
     getCurrentInstance();
     var wrapper = ref();
     var dropdown = ref();
@@ -792,9 +796,9 @@ var VueSelect = {
       });
 
       if (props.multiple) {
-        context.emit('update:modelValue', props.inputName, selectedValues);
+        context.emit('update:modelValue', inputName, selectedValues);
       } else {
-        if (selectedValues.length) context.emit('update:modelValue', props.inputName, selectedValues[0]);else context.emit('update:modelValue', props.inputName, props.emptyModelValue);
+        if (selectedValues.length) context.emit('update:modelValue', inputName, selectedValues[0]);else context.emit('update:modelValue', inputName, props.emptyModelValue);
       }
     };
 
@@ -846,7 +850,7 @@ var VueSelect = {
             min: min.value,
             valueBy: valueBy.value
           });
-          context.emit('removed', props.inputName, option);
+          context.emit('removed', inputName, option);
         });
       } else {
         option.value.forEach(function (value) {
@@ -860,7 +864,7 @@ var VueSelect = {
             max: max.value,
             valueBy: valueBy.value
           });
-          context.emit('selected', props.inputName, option);
+          context.emit('selected', inputName, option);
         });
       }
     };
@@ -875,7 +879,7 @@ var VueSelect = {
           min: min.value,
           valueBy: valueBy.value
         });
-        context.emit('removed', props.inputName, option);
+        context.emit('removed', inputName, option);
       } else {
         if (!props.multiple) {
           var removingOption = normalizedModelValue.value[0];
@@ -883,14 +887,14 @@ var VueSelect = {
             min: 0,
             valueBy: valueBy.value
           });
-          context.emit('removed', props.inputName, removingOption);
+          context.emit('removed', inputName, removingOption);
         }
 
         normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
           max: max.value,
           valueBy: valueBy.value
         });
-        context.emit('selected', props.inputName, option);
+        context.emit('selected', inputName, option);
       }
     };
 
@@ -1159,14 +1163,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
     placeholder: _ctx.innerPlaceholder,
-    "input-name": _ctx.inputName,
+    name: _ctx.inputName,
     readonly: "",
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.focus && _ctx.focus.apply(_ctx, arguments);
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "input-name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
+  , ["placeholder", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
     key: 1
   }, [createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,

@@ -18,7 +18,7 @@
         v-if="(multiple && taggable && modelValue.length === 0) || (searchable === false && taggable === false)"
       >
         <div class="vue-input">
-          <input :placeholder="innerPlaceholder" :input-name="inputName" readonly @click="focus" />
+          <input :placeholder="innerPlaceholder" :name="inputName" readonly @click="focus" />
         </div>
       </template>
 
@@ -247,8 +247,9 @@ const VueSelect = {
     'search:blur',
   ],
   setup(props, context) {
-    const { labelBy, valueBy, disabledBy, groupBy, min, max, options, inputName } = normalize(props)
+    const { labelBy, valueBy, disabledBy, groupBy, min, max, options } = normalize(props)
 
+    const inputName = props.inputName;
     const instance = getCurrentInstance()
     const wrapper = ref()
     const dropdown = ref()
@@ -380,10 +381,10 @@ const VueSelect = {
       if (isSynchronoused()) return
       const selectedValues = normalizedModelValue.value.map(option => valueBy.value(option))
       if (props.multiple) {
-        context.emit('update:modelValue', props.inputName, selectedValues)
+        context.emit('update:modelValue', inputName, selectedValues)
       } else {
-        if (selectedValues.length) context.emit('update:modelValue', props.inputName, selectedValues[0])
-        else context.emit('update:modelValue', props.inputName, props.emptyModelValue)
+        if (selectedValues.length) context.emit('update:modelValue', inputName, selectedValues[0])
+        else context.emit('update:modelValue', inputName, props.emptyModelValue)
       }
     }
     watch(
@@ -424,7 +425,7 @@ const VueSelect = {
             min: min.value,
             valueBy: valueBy.value,
           })
-          context.emit('removed', props.inputName, option)
+          context.emit('removed', inputName, option)
         })
       } else {
         option.value.forEach(value => {
@@ -434,7 +435,7 @@ const VueSelect = {
             max: max.value,
             valueBy: valueBy.value,
           })
-          context.emit('selected', props.inputName, option)
+          context.emit('selected', inputName, option)
         })
       }
     }
@@ -445,7 +446,7 @@ const VueSelect = {
           min: min.value,
           valueBy: valueBy.value,
         })
-        context.emit('removed', props.inputName, option)
+        context.emit('removed', inputName, option)
       } else {
         if (!props.multiple) {
           const removingOption = normalizedModelValue.value[0]
@@ -453,13 +454,13 @@ const VueSelect = {
             min: 0,
             valueBy: valueBy.value,
           })
-          context.emit('removed', props.inputName, removingOption)
+          context.emit('removed', inputName, removingOption)
         }
         normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
           max: max.value,
           valueBy: valueBy.value,
         })
-        context.emit('selected', props.inputName, option)
+        context.emit('selected', inputName, option)
       }
     }
 

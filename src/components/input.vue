@@ -6,7 +6,7 @@
       :modelValue="modelValue"
       :placeholder="placeholder"
       :disabled="disabled"
-      name="inputName"
+      :name="inputName"
       @input="handleInput"
       @change="handleChange"
       @focus="handleFocus"
@@ -53,13 +53,18 @@ export default {
   },
   emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'escape'],
   setup(props, context) {
+
+    const inputName = props.inputName;
+
+    console.log(inputName);
+
     const handleInput = event => {
       context.emit('input', event)
-      context.emit('update:modelValue', props.inputName, event.target.value)
+      context.emit('update:modelValue', inputName, event.target.value)
     }
     const handleChange = event => {
       context.emit('change', event)
-      context.emit('update:modelValue', props.inputName, event.target.value)
+      context.emit('update:modelValue', inputName, event.target.value)
     }
     const handleFocus = event => {
       context.emit('focus', event)
@@ -85,7 +90,7 @@ export default {
       handleChange,
       handleFocus,
       handleBlur,
-
+      inputName,
       input,
       handleEscape,
     }

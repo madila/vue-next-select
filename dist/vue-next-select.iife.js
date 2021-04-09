@@ -122,14 +122,17 @@ this.VueNextSelect = (function (vue) {
     },
     emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'escape'],
     setup: function setup(props, context) {
+      var inputName = props.inputName;
+      console.log(inputName);
+
       var handleInput = function handleInput(event) {
         context.emit('input', event);
-        context.emit('update:modelValue', props.inputName, event.target.value);
+        context.emit('update:modelValue', inputName, event.target.value);
       };
 
       var handleChange = function handleChange(event) {
         context.emit('change', event);
-        context.emit('update:modelValue', props.inputName, event.target.value);
+        context.emit('update:modelValue', inputName, event.target.value);
       };
 
       var handleFocus = function handleFocus(event) {
@@ -158,6 +161,7 @@ this.VueNextSelect = (function (vue) {
         handleChange: handleChange,
         handleFocus: handleFocus,
         handleBlur: handleBlur,
+        inputName: inputName,
         input: input,
         handleEscape: handleEscape
       };
@@ -173,7 +177,7 @@ this.VueNextSelect = (function (vue) {
       modelValue: $props.modelValue,
       placeholder: $props.placeholder,
       disabled: $props.disabled,
-      name: "inputName",
+      name: $setup.inputName,
       onInput: _cache[1] || (_cache[1] = function () {
         return $setup.handleInput && $setup.handleInput.apply($setup, arguments);
       }),
@@ -193,7 +197,7 @@ this.VueNextSelect = (function (vue) {
       autofocus: $props.autofocus
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
-    , ["modelValue", "placeholder", "disabled", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]);
+    , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]);
   }
 
   script$2.render = render$3;
@@ -624,9 +628,9 @@ this.VueNextSelect = (function (vue) {
           groupBy = _normalize.groupBy,
           min = _normalize.min,
           max = _normalize.max,
-          options = _normalize.options,
-          inputName = _normalize.inputName;
+          options = _normalize.options;
 
+      var inputName = props.inputName;
       vue.getCurrentInstance();
       var wrapper = vue.ref();
       var dropdown = vue.ref();
@@ -793,9 +797,9 @@ this.VueNextSelect = (function (vue) {
         });
 
         if (props.multiple) {
-          context.emit('update:modelValue', props.inputName, selectedValues);
+          context.emit('update:modelValue', inputName, selectedValues);
         } else {
-          if (selectedValues.length) context.emit('update:modelValue', props.inputName, selectedValues[0]);else context.emit('update:modelValue', props.inputName, props.emptyModelValue);
+          if (selectedValues.length) context.emit('update:modelValue', inputName, selectedValues[0]);else context.emit('update:modelValue', inputName, props.emptyModelValue);
         }
       };
 
@@ -847,7 +851,7 @@ this.VueNextSelect = (function (vue) {
               min: min.value,
               valueBy: valueBy.value
             });
-            context.emit('removed', props.inputName, option);
+            context.emit('removed', inputName, option);
           });
         } else {
           option.value.forEach(function (value) {
@@ -861,7 +865,7 @@ this.VueNextSelect = (function (vue) {
               max: max.value,
               valueBy: valueBy.value
             });
-            context.emit('selected', props.inputName, option);
+            context.emit('selected', inputName, option);
           });
         }
       };
@@ -876,7 +880,7 @@ this.VueNextSelect = (function (vue) {
             min: min.value,
             valueBy: valueBy.value
           });
-          context.emit('removed', props.inputName, option);
+          context.emit('removed', inputName, option);
         } else {
           if (!props.multiple) {
             var removingOption = normalizedModelValue.value[0];
@@ -884,14 +888,14 @@ this.VueNextSelect = (function (vue) {
               min: 0,
               valueBy: valueBy.value
             });
-            context.emit('removed', props.inputName, removingOption);
+            context.emit('removed', inputName, removingOption);
           }
 
           normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
             max: max.value,
             valueBy: valueBy.value
           });
-          context.emit('selected', props.inputName, option);
+          context.emit('selected', inputName, option);
         }
       };
 
@@ -1160,14 +1164,14 @@ this.VueNextSelect = (function (vue) {
       }, ["prevent"]), ["up"]))]
     }), [vue.createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (vue.openBlock(), vue.createBlock("div", _hoisted_2, [vue.createVNode("input", {
       placeholder: _ctx.innerPlaceholder,
-      "input-name": _ctx.inputName,
+      name: _ctx.inputName,
       readonly: "",
       onClick: _cache[1] || (_cache[1] = function () {
         return _ctx.focus && _ctx.focus.apply(_ctx, arguments);
       })
     }, null, 8
     /* PROPS */
-    , ["placeholder", "input-name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
+    , ["placeholder", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: 1
     }, [vue.createVNode(_component_v_tags, {
       modelValue: _ctx.optionsWithInfo,
