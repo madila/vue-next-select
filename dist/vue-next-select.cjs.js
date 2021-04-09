@@ -520,6 +520,10 @@ var VueSelect = {
     emptyModelValue: {
       "default": null
     },
+    inputName: {
+      "default": '',
+      type: String
+    },
     options: {
       required: true,
       type: Array
@@ -628,6 +632,7 @@ var VueSelect = {
       return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
     });
     var isFocusing = vue.ref(false);
+    console.log(inputEl, input);
     vue.watch(function () {
       return isFocusing.value;
     }, function () {
@@ -783,9 +788,9 @@ var VueSelect = {
       });
 
       if (props.multiple) {
-        context.emit('update:modelValue', selectedValues);
+        context.emit('update:modelValue', props.inputName, selectedValues);
       } else {
-        if (selectedValues.length) context.emit('update:modelValue', selectedValues[0]);else context.emit('update:modelValue', props.emptyModelValue);
+        if (selectedValues.length) context.emit('update:modelValue', selectedValues[0]);else context.emit('update:modelValue', props.inputName, props.emptyModelValue);
       }
     };
 

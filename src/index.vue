@@ -141,6 +141,10 @@ const VueSelect = {
     emptyModelValue: {
       default: null,
     },
+    inputName: {
+      default: '',
+      type: String,
+    },
     options: {
       required: true,
       type: Array,
@@ -183,7 +187,6 @@ const VueSelect = {
       default: 'disabled',
       type: [String, Function],
     },
-
     disabled: {
       default: false,
       type: Boolean,
@@ -225,7 +228,6 @@ const VueSelect = {
       default: false,
       type: Boolean,
     },
-
     groupBy: {
       default: 'group',
       type: [String, Function],
@@ -251,6 +253,8 @@ const VueSelect = {
     const input = ref()
     const inputEl = computed(() => input.value?._.refs.input)
     const isFocusing = ref(false)
+
+    console.log(inputEl, input);
     watch(
       () => isFocusing.value,
       () => {
@@ -374,10 +378,10 @@ const VueSelect = {
       if (isSynchronoused()) return
       const selectedValues = normalizedModelValue.value.map(option => valueBy.value(option))
       if (props.multiple) {
-        context.emit('update:modelValue', selectedValues)
+        context.emit('update:modelValue', props.inputName, selectedValues)
       } else {
         if (selectedValues.length) context.emit('update:modelValue', selectedValues[0])
-        else context.emit('update:modelValue', props.emptyModelValue)
+        else context.emit('update:modelValue', props.inputName, props.emptyModelValue)
       }
     }
     watch(
