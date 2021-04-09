@@ -414,7 +414,7 @@ var normalize = (function (props) {
   var valueBy = createComputedForGetterFunction(toRef(props, 'valueBy'));
   var disabledBy = createComputedForGetterFunction(toRef(props, 'disabledBy'));
   var groupBy = createComputedForGetterFunction(toRef(props, 'groupBy'));
-  var inputName = createComputedForGetterFunction(toRef(props, 'inputName'));
+  var inputName = props.inputName;
   var min = computed(function () {
     return props.multiple ? props.min : Math.min(1, props.min);
   });
