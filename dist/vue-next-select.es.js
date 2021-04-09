@@ -107,8 +107,7 @@ var script$2 = {
       type: Boolean
     },
     inputName: {
-      "default": '',
-      type: String
+      required: true
     },
     tabindex: {
       required: true,
@@ -528,8 +527,7 @@ var VueSelect = {
       "default": null
     },
     inputName: {
-      "default": '',
-      type: String
+      required: true
     },
     options: {
       required: true,

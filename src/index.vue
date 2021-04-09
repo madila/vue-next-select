@@ -144,8 +144,7 @@ const VueSelect = {
       default: null,
     },
     inputName: {
-      default: '',
-      type: String,
+      required: true
     },
     options: {
       required: true,

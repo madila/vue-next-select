@@ -39,8 +39,7 @@ export default {
       type: Boolean,
     },
     inputName: {
-      default: '',
-      type: String
+      required: true
     },
     tabindex: {
       required: true,
@@ -54,7 +53,7 @@ export default {
   emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'escape'],
   setup(props, context) {
 
-    const inputName = props.inputName;
+    const { inputName } = props;
 
     console.log(inputName);
 

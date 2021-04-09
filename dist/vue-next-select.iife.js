@@ -108,8 +108,7 @@ this.VueNextSelect = (function (vue) {
         type: Boolean
       },
       inputName: {
-        "default": '',
-        type: String
+        required: true
       },
       tabindex: {
         required: true,
@@ -529,8 +528,7 @@ this.VueNextSelect = (function (vue) {
         "default": null
       },
       inputName: {
-        "default": '',
-        type: String
+        required: true
       },
       options: {
         required: true,
