@@ -18,7 +18,7 @@
         v-if="(multiple && taggable && modelValue.length === 0) || (searchable === false && taggable === false)"
       >
         <div class="vue-input">
-          <input :placeholder="innerPlaceholder" name="inputName" readonly @click="focus" />
+          <input :placeholder="innerPlaceholder" :input-name="inputName" readonly @click="focus" />
         </div>
       </template>
 
@@ -58,7 +58,7 @@
           @focus="handleFocusForInput"
           @blur="handleBlurForInput"
           @escape="blur"
-          name="inputName"
+          :input-name="inputName"
           :autofocus="autofocus || (taggable && searchable)"
           :tabindex="tabindex"
         ></v-input>
@@ -92,7 +92,7 @@
         @focus="handleFocusForInput"
         @blur="handleBlurForInput"
         @escape="blur"
-        name="inputName"
+        :input-name="inputName"
         :tabindex="tabindex"
         :autofocus="autofocus || (taggable && searchable)"
       >
@@ -247,7 +247,7 @@ const VueSelect = {
     'search:blur',
   ],
   setup(props, context) {
-    const { labelBy, valueBy, disabledBy, groupBy, min, max, options } = normalize(props)
+    const { labelBy, valueBy, disabledBy, groupBy, min, max, options, inputName } = normalize(props)
 
     const instance = getCurrentInstance()
     const wrapper = ref()
@@ -256,7 +256,7 @@ const VueSelect = {
     const inputEl = computed(() => input.value?._.refs.input)
     const isFocusing = ref(false)
 
-    console.log(inputEl, input);
+    console.log(inputName);
     watch(
       () => isFocusing.value,
       () => {
@@ -602,6 +602,7 @@ const VueSelect = {
 
     return {
       isFocusing,
+      inputName,
       wrapper,
       dropdown,
       input,

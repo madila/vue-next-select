@@ -624,7 +624,8 @@ this.VueNextSelect = (function (vue) {
           groupBy = _normalize.groupBy,
           min = _normalize.min,
           max = _normalize.max,
-          options = _normalize.options;
+          options = _normalize.options,
+          inputName = _normalize.inputName;
 
       vue.getCurrentInstance();
       var wrapper = vue.ref();
@@ -636,7 +637,7 @@ this.VueNextSelect = (function (vue) {
         return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
       });
       var isFocusing = vue.ref(false);
-      console.log(inputEl, input);
+      console.log(inputName);
       vue.watch(function () {
         return isFocusing.value;
       }, function () {
@@ -1055,6 +1056,7 @@ this.VueNextSelect = (function (vue) {
       });
       return {
         isFocusing: isFocusing,
+        inputName: inputName,
         wrapper: wrapper,
         dropdown: dropdown,
         input: input,
@@ -1158,14 +1160,14 @@ this.VueNextSelect = (function (vue) {
       }, ["prevent"]), ["up"]))]
     }), [vue.createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (vue.openBlock(), vue.createBlock("div", _hoisted_2, [vue.createVNode("input", {
       placeholder: _ctx.innerPlaceholder,
-      name: "inputName",
+      "input-name": _ctx.inputName,
       readonly: "",
       onClick: _cache[1] || (_cache[1] = function () {
         return _ctx.focus && _ctx.focus.apply(_ctx, arguments);
       })
     }, null, 8
     /* PROPS */
-    , ["placeholder"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
+    , ["placeholder", "input-name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: 1
     }, [vue.createVNode(_component_v_tags, {
       modelValue: _ctx.optionsWithInfo,
@@ -1225,12 +1227,12 @@ this.VueNextSelect = (function (vue) {
       onFocus: _ctx.handleFocusForInput,
       onBlur: _ctx.handleBlurForInput,
       onEscape: _ctx.blur,
-      name: "inputName",
+      "input-name": _ctx.inputName,
       autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable,
       tabindex: _ctx.tabindex
     }, null, 8
     /* PROPS */
-    , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "autofocus", "tabindex"])) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
+    , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "autofocus", "tabindex"])) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
     /* NEED_PATCH */
     ), [[vue.vShow, _ctx.loading]]), vue.withDirectives(vue.createVNode("span", {
       "class": ["icon arrow-downward", {
@@ -1260,7 +1262,7 @@ this.VueNextSelect = (function (vue) {
       onFocus: _ctx.handleFocusForInput,
       onBlur: _ctx.handleBlurForInput,
       onEscape: _ctx.blur,
-      name: "inputName",
+      "input-name": _ctx.inputName,
       tabindex: _ctx.tabindex,
       autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable
     }, {
@@ -1274,7 +1276,7 @@ this.VueNextSelect = (function (vue) {
 
     }, 8
     /* PROPS */
-    , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "tabindex", "autofocus"])), [[vue.vShow, _ctx.isFocusing]]) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode(_component_v_dropdown, {
+    , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "tabindex", "autofocus"])), [[vue.vShow, _ctx.isFocusing]]) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode(_component_v_dropdown, {
       ref: "dropdown",
       modelValue: _ctx.optionsWithInfo,
       "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
