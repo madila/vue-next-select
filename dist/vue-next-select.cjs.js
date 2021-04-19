@@ -536,7 +536,7 @@ var VueSelect = {
       required: true
     },
     initialValue: {
-      type: String
+      type: [Array, String]
     },
     options: {
       required: true,

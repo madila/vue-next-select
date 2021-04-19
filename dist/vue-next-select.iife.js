@@ -535,7 +535,7 @@ this.VueNextSelect = (function (vue) {
         required: true
       },
       initialValue: {
-        type: String
+        type: [Array, String]
       },
       options: {
         required: true,
