@@ -414,6 +414,7 @@ var normalize = (function (props) {
   var valueBy = createComputedForGetterFunction(toRef(props, 'valueBy'));
   var disabledBy = createComputedForGetterFunction(toRef(props, 'disabledBy'));
   var groupBy = createComputedForGetterFunction(toRef(props, 'groupBy'));
+  var initialValue = props.initialValue;
   var inputName = props.inputName;
   var min = computed(function () {
     return props.multiple ? props.min : Math.min(1, props.min);
@@ -430,7 +431,8 @@ var normalize = (function (props) {
     min: min,
     max: max,
     options: options,
-    inputName: inputName
+    inputName: inputName,
+    initialValue: initialValue
   };
 });
 
@@ -531,6 +533,9 @@ var VueSelect = {
     inputName: {
       required: true
     },
+    initialValue: {
+      type: String
+    },
     options: {
       required: true,
       type: Array
@@ -628,7 +633,8 @@ var VueSelect = {
         min = _normalize.min,
         max = _normalize.max,
         options = _normalize.options,
-        inputName = _normalize.inputName;
+        inputName = _normalize.inputName,
+        initialValue = _normalize.initialValue;
 
     getCurrentInstance();
     var wrapper = ref();
@@ -1059,6 +1065,7 @@ var VueSelect = {
     return {
       isFocusing: isFocusing,
       inputName: inputName,
+      initialValue: initialValue,
       wrapper: wrapper,
       dropdown: dropdown,
       input: input,

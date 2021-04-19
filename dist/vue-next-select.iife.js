@@ -415,6 +415,7 @@ this.VueNextSelect = (function (vue) {
     var valueBy = createComputedForGetterFunction(vue.toRef(props, 'valueBy'));
     var disabledBy = createComputedForGetterFunction(vue.toRef(props, 'disabledBy'));
     var groupBy = createComputedForGetterFunction(vue.toRef(props, 'groupBy'));
+    var initialValue = props.initialValue;
     var inputName = props.inputName;
     var min = vue.computed(function () {
       return props.multiple ? props.min : Math.min(1, props.min);
@@ -431,7 +432,8 @@ this.VueNextSelect = (function (vue) {
       min: min,
       max: max,
       options: options,
-      inputName: inputName
+      inputName: inputName,
+      initialValue: initialValue
     };
   });
 
@@ -532,6 +534,9 @@ this.VueNextSelect = (function (vue) {
       inputName: {
         required: true
       },
+      initialValue: {
+        type: String
+      },
       options: {
         required: true,
         type: Array
@@ -629,7 +634,8 @@ this.VueNextSelect = (function (vue) {
           min = _normalize.min,
           max = _normalize.max,
           options = _normalize.options,
-          inputName = _normalize.inputName;
+          inputName = _normalize.inputName,
+          initialValue = _normalize.initialValue;
 
       vue.getCurrentInstance();
       var wrapper = vue.ref();
@@ -1060,6 +1066,7 @@ this.VueNextSelect = (function (vue) {
       return {
         isFocusing: isFocusing,
         inputName: inputName,
+        initialValue: initialValue,
         wrapper: wrapper,
         dropdown: dropdown,
         input: input,

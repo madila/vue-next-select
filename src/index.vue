@@ -146,6 +146,9 @@ const VueSelect = {
     inputName: {
       required: true
     },
+    initialValue: {
+      type: String
+    },
     options: {
       required: true,
       type: Array,
@@ -246,7 +249,7 @@ const VueSelect = {
     'search:blur',
   ],
   setup(props, context) {
-    const { labelBy, valueBy, disabledBy, groupBy, min, max, options, inputName } = normalize(props)
+    const { labelBy, valueBy, disabledBy, groupBy, min, max, options, inputName, initialValue } = normalize(props)
 
     const instance = getCurrentInstance()
     const wrapper = ref()
@@ -601,6 +604,7 @@ const VueSelect = {
     return {
       isFocusing,
       inputName,
+      initialValue,
       wrapper,
       dropdown,
       input,

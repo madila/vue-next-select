@@ -14,6 +14,7 @@ export default props => {
   const valueBy = createComputedForGetterFunction(toRef(props, 'valueBy'))
   const disabledBy = createComputedForGetterFunction(toRef(props, 'disabledBy'))
   const groupBy = createComputedForGetterFunction(toRef(props, 'groupBy'))
+  const initialValue = props.initialValue
   const inputName = props.inputName
 
   const min = computed(() => (props.multiple ? props.min : Math.min(1, props.min)))
@@ -29,6 +30,7 @@ export default props => {
     min,
     max,
     options,
-    inputName
+    inputName,
+    initialValue
   }
 }
