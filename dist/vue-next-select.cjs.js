@@ -798,8 +798,10 @@ var VueSelect = {
       });
 
       if (props.multiple) {
+        console.log('sync', selectedValues);
         context.emit('update:modelValue', inputName, selectedValues);
       } else {
+        console.log('sync', selectedValues);
         if (selectedValues.length) context.emit('update:modelValue', inputName, selectedValues[0]);else context.emit('update:modelValue', inputName, props.emptyModelValue);
       }
     };
