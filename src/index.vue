@@ -18,7 +18,7 @@
         v-if="(multiple && taggable && modelValue.length === 0) || (searchable === false && taggable === false)"
       >
         <div class="vue-input">
-          <input :placeholder="innerPlaceholder" :data-initial="initialValue" :name="inputName" readonly @click="focus" />
+          <input :data-initial="initialValue" :name="inputName" readonly @click="focus" />
         </div>
       </template>
 
@@ -59,6 +59,7 @@
           @blur="handleBlurForInput"
           @escape="blur"
           :input-name="inputName"
+          :data-initial="initialValue"
           :autofocus="autofocus || (taggable && searchable)"
           :tabindex="tabindex"
         ></v-input>
@@ -93,6 +94,7 @@
         @blur="handleBlurForInput"
         @escape="blur"
         :input-name="inputName"
+        :data-initial="initialValue"
         :tabindex="tabindex"
         :autofocus="autofocus || (taggable && searchable)"
       >

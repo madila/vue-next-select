@@ -1168,7 +1168,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.pointerBackward && _ctx.pointerBackward.apply(_ctx, arguments);
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
-    placeholder: _ctx.innerPlaceholder,
     "data-initial": _ctx.initialValue,
     name: _ctx.inputName,
     readonly: "",
@@ -1177,7 +1176,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
+  , ["data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
     key: 1
   }, [createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
@@ -1238,11 +1237,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _ctx.handleBlurForInput,
     onEscape: _ctx.blur,
     "input-name": _ctx.inputName,
+    "data-initial": _ctx.initialValue,
     autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable,
     tabindex: _ctx.tabindex
   }, null, 8
   /* PROPS */
-  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "autofocus", "tabindex"])) : createCommentVNode("v-if", true), withDirectives(createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
+  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "autofocus", "tabindex"])) : createCommentVNode("v-if", true), withDirectives(createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
   /* NEED_PATCH */
   ), [[vShow, _ctx.loading]]), withDirectives(createVNode("span", {
     "class": ["icon arrow-downward", {
@@ -1273,6 +1273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _ctx.handleBlurForInput,
     onEscape: _ctx.blur,
     "input-name": _ctx.inputName,
+    "data-initial": _ctx.initialValue,
     tabindex: _ctx.tabindex,
     autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable
   }, {
@@ -1286,7 +1287,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "tabindex", "autofocus"])), [[vShow, _ctx.isFocusing]]) : createCommentVNode("v-if", true), withDirectives(createVNode(_component_v_dropdown, {
+  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "tabindex", "autofocus"])), [[vShow, _ctx.isFocusing]]) : createCommentVNode("v-if", true), withDirectives(createVNode(_component_v_dropdown, {
     ref: "dropdown",
     modelValue: _ctx.optionsWithInfo,
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
