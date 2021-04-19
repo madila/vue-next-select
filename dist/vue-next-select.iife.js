@@ -796,11 +796,9 @@ this.VueNextSelect = (function (vue) {
         });
 
         if (props.multiple) {
-          console.log('sync', props, selectedValues);
-          context.emit('update:modelValue', inputName, selectedValues);
+          context.emit('update:modelValue', props, selectedValues);
         } else {
-          console.log('sync', props, selectedValues);
-          if (selectedValues.length) context.emit('update:modelValue', inputName, selectedValues[0]);else context.emit('update:modelValue', inputName, props.emptyModelValue);
+          if (selectedValues.length) context.emit('update:modelValue', props, selectedValues[0]);else context.emit('update:modelValue', props, props.emptyModelValue);
         }
       };
 
