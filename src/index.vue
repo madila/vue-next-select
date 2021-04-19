@@ -309,10 +309,10 @@ const VueSelect = {
     // input
     const searchingInputValue = ref('')
     const handleInputForInput = event => {
-      context.emit('search:input', event)
+      context.emit('search:input', event, props)
     }
     const handleChangeForInput = event => {
-      context.emit('search:change', event)
+      context.emit('search:change', event, props)
     }
     const handleFocusForInput = event => {
       focus()
@@ -425,7 +425,7 @@ const VueSelect = {
             min: min.value,
             valueBy: valueBy.value,
           })
-          context.emit('removed', inputName, option)
+          context.emit('removed', props, option)
         })
       } else {
         option.value.forEach(value => {
@@ -435,7 +435,7 @@ const VueSelect = {
             max: max.value,
             valueBy: valueBy.value,
           })
-          context.emit('selected', inputName, option)
+          context.emit('selected', props, option)
         })
       }
     }
@@ -446,7 +446,7 @@ const VueSelect = {
           min: min.value,
           valueBy: valueBy.value,
         })
-        context.emit('removed', inputName, option)
+        context.emit('removed', props, option)
       } else {
         if (!props.multiple) {
           const removingOption = normalizedModelValue.value[0]
@@ -454,13 +454,13 @@ const VueSelect = {
             min: 0,
             valueBy: valueBy.value,
           })
-          context.emit('removed', inputName, removingOption)
+          context.emit('removed', props, removingOption)
         }
         normalizedModelValue.value = addOption(normalizedModelValue.value, option, {
           max: max.value,
           valueBy: valueBy.value,
         })
-        context.emit('selected', inputName, option)
+        context.emit('selected', props, option)
       }
     }
 
