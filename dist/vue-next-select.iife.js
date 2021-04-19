@@ -641,7 +641,6 @@ this.VueNextSelect = (function (vue) {
         return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
       });
       var isFocusing = vue.ref(false);
-      console.log(props, input, inputEl, inputName);
       vue.watch(function () {
         return isFocusing.value;
       }, function () {
@@ -1166,6 +1165,7 @@ this.VueNextSelect = (function (vue) {
       }, ["prevent"]), ["up"]))]
     }), [vue.createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (vue.openBlock(), vue.createBlock("div", _hoisted_2, [vue.createVNode("input", {
       placeholder: _ctx.innerPlaceholder,
+      initial: _ctx.modelValue,
       name: _ctx.inputName,
       readonly: "",
       onClick: _cache[1] || (_cache[1] = function () {
@@ -1173,7 +1173,7 @@ this.VueNextSelect = (function (vue) {
       })
     }, null, 8
     /* PROPS */
-    , ["placeholder", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
+    , ["placeholder", "initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: 1
     }, [vue.createVNode(_component_v_tags, {
       modelValue: _ctx.optionsWithInfo,

@@ -640,7 +640,6 @@ var VueSelect = {
       return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
     });
     var isFocusing = ref(false);
-    console.log(props, input, inputEl, inputName);
     watch(function () {
       return isFocusing.value;
     }, function () {
@@ -1165,6 +1164,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
     placeholder: _ctx.innerPlaceholder,
+    initial: _ctx.modelValue,
     name: _ctx.inputName,
     readonly: "",
     onClick: _cache[1] || (_cache[1] = function () {
@@ -1172,7 +1172,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
+  , ["placeholder", "initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
     key: 1
   }, [createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
