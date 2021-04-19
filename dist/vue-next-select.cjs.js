@@ -1170,6 +1170,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.pointerBackward && _ctx.pointerBackward.apply(_ctx, arguments);
     }, ["prevent"]), ["up"]))]
   }), [vue.createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (vue.openBlock(), vue.createBlock("div", _hoisted_2, [vue.createVNode("input", {
+    placeholder: _ctx.innerPlaceholder,
     "data-initial": _ctx.initialValue,
     name: _ctx.inputName,
     readonly: "",
@@ -1178,7 +1179,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["data-initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
+  , ["placeholder", "data-initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
     key: 1
   }, [vue.createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
