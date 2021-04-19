@@ -1047,6 +1047,7 @@ var VueSelect = {
       }).filter(function (option) {
         return !option.group;
       });
+      console.log(selectedOptions);
 
       if (props.multiple) {
         if (selectedOptions.length === 0) {
