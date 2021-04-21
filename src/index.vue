@@ -586,8 +586,6 @@ const VueSelect = {
     const innerPlaceholder = computed(() => {
       const selectedOptions = optionsWithInfo.value.filter(option => option.selected).filter(option => !option.group)
 
-      console.log(selectedOptions);
-
       if (props.multiple) {
         if (selectedOptions.length === 0) {
           return props.placeholder
