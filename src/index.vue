@@ -440,6 +440,13 @@ const VueSelect = {
           context.emit('selected', props, option)
         })
       }
+      if (props.closeOnSelect === true) isFocusing.value = false
+      if (props.clearOnSelect === true && searchingInputValue.value) {
+        // simulate clear input value
+        input.value._.refs.input.value = ''
+        input.value._.refs.input.dispatchEvent(new Event('input'))
+        input.value._.refs.input.dispatchEvent(new Event('change'))
+      }
     }
     const addOrRemoveOptionForNonGroupOption = (event, option) => {
       option = option.originalOption
