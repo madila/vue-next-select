@@ -440,9 +440,12 @@ const VueSelect = {
           context.emit('selected', props, option)
         })
       }
+      console.log('running');
       if (props.closeOnSelect === true) isFocusing.value = false
+      console.log('remove focus');
       if (props.clearOnSelect === true && searchingInputValue.value) {
         // simulate clear input value
+        console.log('clear input', input, this);
         input.value._.refs.input.value = ''
         input.value._.refs.input.dispatchEvent(new Event('input'))
         input.value._.refs.input.dispatchEvent(new Event('change'))

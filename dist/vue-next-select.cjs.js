@@ -520,7 +520,7 @@ var usePointer = function usePointer(options, highlightedOriginalIndex) {
   };
 };
 
-var version = "2.1.1";
+var version = "2.1.2";
 
 var VueSelect = {
   name: 'vue-select',
@@ -627,6 +627,8 @@ var VueSelect = {
   },
   emits: ['update:modelValue', 'selected', 'removed', 'opened', 'closed', 'search:input', 'search:change', 'search:focus', 'search:blur'],
   setup: function setup(props, context) {
+    var _this = this;
+
     var _normalize = normalize(props),
         labelBy = _normalize.labelBy,
         valueBy = _normalize.valueBy,
@@ -875,10 +877,13 @@ var VueSelect = {
         });
       }
 
+      console.log('running');
       if (props.closeOnSelect === true) isFocusing.value = false;
+      console.log('remove focus');
 
       if (props.clearOnSelect === true && searchingInputValue.value) {
         // simulate clear input value
+        console.log('clear input', input, _this);
         input.value._.refs.input.value = '';
 
         input.value._.refs.input.dispatchEvent(new Event('input'));
