@@ -451,6 +451,7 @@ const VueSelect = {
         input.value._.refs.input.dispatchEvent(new Event('change'))
       }
     }
+
     const addOrRemoveOptionForNonGroupOption = (event, option) => {
       option = option.originalOption
       if (hasOption(normalizedModelValue.value, option, { valueBy: valueBy.value })) {
