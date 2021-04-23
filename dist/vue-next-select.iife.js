@@ -122,7 +122,6 @@ this.VueNextSelect = (function (vue) {
     emits: ['update:modelValue', 'input', 'change', 'focus', 'blur', 'escape'],
     setup: function setup(props, context) {
       var inputName = props.inputName;
-      console.log(inputName);
 
       var handleInput = function handleInput(event) {
         context.emit('input', event);
@@ -626,8 +625,6 @@ this.VueNextSelect = (function (vue) {
     },
     emits: ['update:modelValue', 'selected', 'removed', 'opened', 'closed', 'search:input', 'search:change', 'search:focus', 'search:blur'],
     setup: function setup(props, context) {
-      var _this = this;
-
       var _normalize = normalize(props),
           labelBy = _normalize.labelBy,
           valueBy = _normalize.valueBy,
@@ -876,13 +873,10 @@ this.VueNextSelect = (function (vue) {
           });
         }
 
-        console.log('running');
         if (props.closeOnSelect === true) isFocusing.value = false;
-        console.log('remove focus');
 
         if (props.clearOnSelect === true && searchingInputValue.value) {
           // simulate clear input value
-          console.log('clear input', input, _this);
           input.value._.refs.input.value = '';
 
           input.value._.refs.input.dispatchEvent(new Event('input'));
@@ -1035,6 +1029,7 @@ this.VueNextSelect = (function (vue) {
 
       var dataAttrs = vue.computed(function () {
         return {
+          'data-initial-value': initialValue,
           'data-is-focusing': isFocusing.value,
           'data-visible-length': optionsWithInfo.value.filter(function (option) {
             return option.visible && option.hidden === false;

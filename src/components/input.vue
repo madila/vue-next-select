@@ -54,9 +54,6 @@ export default {
   setup(props, context) {
 
     const { inputName } = props;
-
-    console.log(inputName);
-
     const handleInput = event => {
       context.emit('input', event)
       context.emit('update:modelValue', inputName, event.target.value)

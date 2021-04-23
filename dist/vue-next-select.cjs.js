@@ -1,4 +1,6 @@
-import { ref, onMounted, onUpdated, openBlock, createBlock, renderSlot, createVNode, withKeys, withModifiers, inject, mergeProps, Fragment, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
+'use strict';
+
+var vue = require('vue');
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -140,17 +142,17 @@ var script$2 = {
       context.emit('blur', event);
     };
 
-    var input = ref(null);
+    var input = vue.ref(null);
 
     var handleEscape = function handleEscape(event) {
       input.value.blur();
       context.emit('escape', event);
     };
 
-    onMounted(function () {
+    vue.onMounted(function () {
       if (props.autofocus) input.value.focus();
     });
-    onUpdated(function () {
+    vue.onUpdated(function () {
       if (props.autofocus) input.value.focus();
     });
     return {
@@ -169,7 +171,7 @@ var _hoisted_1$1 = {
   "class": "vue-input"
 };
 function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$1, [renderSlot(_ctx.$slots, "prepend"), createVNode("input", {
+  return vue.openBlock(), vue.createBlock("div", _hoisted_1$1, [vue.renderSlot(_ctx.$slots, "prepend"), vue.createVNode("input", {
     ref: "input",
     modelValue: $props.modelValue,
     placeholder: $props.placeholder,
@@ -187,14 +189,14 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     onBlur: _cache[4] || (_cache[4] = function () {
       return $setup.handleBlur && $setup.handleBlur.apply($setup, arguments);
     }),
-    onKeyup: _cache[5] || (_cache[5] = withKeys(withModifiers(function () {
+    onKeyup: _cache[5] || (_cache[5] = vue.withKeys(vue.withModifiers(function () {
       return $setup.handleEscape && $setup.handleEscape.apply($setup, arguments);
     }, ["exact"]), ["esc"])),
     tabindex: $props.tabindex,
     autofocus: $props.autofocus
   }, null, 40
   /* PROPS, HYDRATE_EVENTS */
-  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]);
+  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]);
 }
 
 script$2.render = render$3;
@@ -219,7 +221,7 @@ var script$1 = {
   },
   emits: ['click'],
   setup: function setup(props, context) {
-    var dataAttrs = inject('dataAttrs');
+    var dataAttrs = vue.inject('dataAttrs');
 
     var handleClick = function handleClick(event) {
       context.emit('click', event);
@@ -233,32 +235,32 @@ var script$1 = {
 };
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("ul", mergeProps({
+  return vue.openBlock(), vue.createBlock("ul", vue.mergeProps({
     "class": ["vue-tags", {
       collapsed: $props.collapseTags
     }],
-    onMousedown: _cache[1] || (_cache[1] = withModifiers(function () {}, ["prevent"])),
+    onMousedown: _cache[1] || (_cache[1] = vue.withModifiers(function () {}, ["prevent"])),
     tabindex: "-1",
     onClick: _cache[2] || (_cache[2] = function () {
       return $setup.handleClick && $setup.handleClick.apply($setup, arguments);
     })
-  }, $setup.dataAttrs), [(openBlock(true), createBlock(Fragment, null, renderList($props.modelValue, function (option) {
-    return openBlock(), createBlock(Fragment, {
+  }, $setup.dataAttrs), [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList($props.modelValue, function (option) {
+    return vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: option.key
-    }, [!option.group ? (openBlock(), createBlock("li", {
+    }, [!option.group ? (vue.openBlock(), vue.createBlock("li", {
       key: 0,
       "class": ["vue-tag", {
         selected: option.selected
       }]
-    }, [renderSlot(_ctx.$slots, "default", {
+    }, [vue.renderSlot(_ctx.$slots, "default", {
       option: option
     }, function () {
-      return [createVNode("span", null, toDisplayString(option.label), 1
+      return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
       /* TEXT */
       )];
     })], 2
     /* CLASS */
-    )) : createCommentVNode("v-if", true)], 64
+    )) : vue.createCommentVNode("v-if", true)], 64
     /* STABLE_FRAGMENT */
     );
   }), 128
@@ -291,7 +293,7 @@ var script = {
   },
   emits: ['click-item', 'mousemove'],
   setup: function setup(props, context) {
-    var dataAttrs = inject('dataAttrs');
+    var dataAttrs = vue.inject('dataAttrs');
 
     var handleClickItem = function handleClickItem(event, option) {
       if (option.disabled) return;
@@ -311,16 +313,16 @@ var script = {
 };
 
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("ul", mergeProps({
+  return vue.openBlock(), vue.createBlock("ul", vue.mergeProps({
     "class": "vue-dropdown",
-    onMousedown: _cache[1] || (_cache[1] = withModifiers(function () {}, ["prevent"])),
+    onMousedown: _cache[1] || (_cache[1] = vue.withModifiers(function () {}, ["prevent"])),
     style: {
       top: $props.headerHeight
     }
-  }, $setup.dataAttrs), [(openBlock(true), createBlock(Fragment, null, renderList($props.modelValue, function (option) {
-    return openBlock(), createBlock(Fragment, {
+  }, $setup.dataAttrs), [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList($props.modelValue, function (option) {
+    return vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: option.key
-    }, [option.visible && option.hidden === false ? (openBlock(), createBlock("li", {
+    }, [option.visible && option.hidden === false ? (vue.openBlock(), vue.createBlock("li", {
       key: 0,
       onClick: function onClick($event) {
         return $setup.handleClickItem($event, option);
@@ -334,15 +336,15 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
       onMousemove: function onMousemove($event) {
         return $setup.handleMousemove($event, option);
       }
-    }, [renderSlot(_ctx.$slots, "default", {
+    }, [vue.renderSlot(_ctx.$slots, "default", {
       option: option
     }, function () {
-      return [createVNode("span", null, toDisplayString(option.label), 1
+      return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
       /* TEXT */
       )];
     })], 42
     /* CLASS, PROPS, HYDRATE_EVENTS */
-    , ["onClick", "onMousemove"])) : createCommentVNode("v-if", true)], 64
+    , ["onClick", "onMousemove"])) : vue.createCommentVNode("v-if", true)], 64
     /* STABLE_FRAGMENT */
     );
   }), 128
@@ -397,7 +399,7 @@ var removeOption = function removeOption(selectedOptions, option, _ref5) {
 };
 
 var createComputedForGetterFunction = function createComputedForGetterFunction(maybePathFunc) {
-  return computed(function () {
+  return vue.computed(function () {
     return typeof maybePathFunc.value === 'function' ? maybePathFunc.value : typeof maybePathFunc.value === 'string' ? function (option) {
       return maybePathFunc.value.split('.').reduce(function (value, key) {
         return value[key];
@@ -409,19 +411,19 @@ var createComputedForGetterFunction = function createComputedForGetterFunction(m
 };
 
 var normalize = (function (props) {
-  var labelBy = createComputedForGetterFunction(toRef(props, 'labelBy'));
-  var valueBy = createComputedForGetterFunction(toRef(props, 'valueBy'));
-  var disabledBy = createComputedForGetterFunction(toRef(props, 'disabledBy'));
-  var groupBy = createComputedForGetterFunction(toRef(props, 'groupBy'));
+  var labelBy = createComputedForGetterFunction(vue.toRef(props, 'labelBy'));
+  var valueBy = createComputedForGetterFunction(vue.toRef(props, 'valueBy'));
+  var disabledBy = createComputedForGetterFunction(vue.toRef(props, 'disabledBy'));
+  var groupBy = createComputedForGetterFunction(vue.toRef(props, 'groupBy'));
   var initialValue = props.initialValue;
   var inputName = props.inputName;
-  var min = computed(function () {
+  var min = vue.computed(function () {
     return props.multiple ? props.min : Math.min(1, props.min);
   });
-  var max = computed(function () {
+  var max = vue.computed(function () {
     return props.multiple ? props.max : 1;
   });
-  var options = isRef(props.options) || isReactive(props.options) ? toRef(props, 'options') : ref(props.options);
+  var options = vue.isRef(props.options) || vue.isReactive(props.options) ? vue.toRef(props, 'options') : vue.ref(props.options);
   return {
     labelBy: labelBy,
     valueBy: valueBy,
@@ -436,17 +438,17 @@ var normalize = (function (props) {
 });
 
 var useHeight = function useHeight(element, watchSource) {
-  var height = ref('0');
+  var height = vue.ref('0');
 
   var calcHeaderHeight = function calcHeaderHeight() {
-    nextTick(function () {
+    vue.nextTick(function () {
       if (!element.value) return;
       height.value = window.getComputedStyle(element.value).height;
     });
   };
 
-  watch(watchSource, calcHeaderHeight);
-  onMounted(calcHeaderHeight);
+  vue.watch(watchSource, calcHeaderHeight);
+  vue.onMounted(calcHeaderHeight);
   return height;
 };
 var usePointer = function usePointer(options, highlightedOriginalIndex) {
@@ -488,12 +490,12 @@ var usePointer = function usePointer(options, highlightedOriginalIndex) {
     return !option.disabled && !option.hidden && option.visible;
   };
 
-  var isSomeSelectable = computed(function () {
+  var isSomeSelectable = vue.computed(function () {
     return options.value.some(function (option) {
       return isSelectable(option);
     });
   });
-  watchEffect(function () {
+  vue.watchEffect(function () {
     if (isSomeSelectable.value === false) highlightedOriginalIndex.value = null;
 
     if (options.value.length <= highlightedOriginalIndex.value) {
@@ -635,17 +637,17 @@ var VueSelect = {
         inputName = _normalize.inputName,
         initialValue = _normalize.initialValue;
 
-    getCurrentInstance();
-    var wrapper = ref();
-    var dropdown = ref();
-    var input = ref();
-    var inputEl = computed(function () {
+    vue.getCurrentInstance();
+    var wrapper = vue.ref();
+    var dropdown = vue.ref();
+    var input = vue.ref();
+    var inputEl = vue.computed(function () {
       var _input$value;
 
       return (_input$value = input.value) === null || _input$value === void 0 ? void 0 : _input$value._.refs.input;
     });
-    var isFocusing = ref(false);
-    watch(function () {
+    var isFocusing = vue.ref(false);
+    vue.watch(function () {
       return isFocusing.value;
     }, function () {
       if (isFocusing.value) {
@@ -689,23 +691,23 @@ var VueSelect = {
       if (isFocusing.value) blur();else focus();
     };
 
-    watch(function () {
+    vue.watch(function () {
       return props.disabled;
     }, function () {
       return blur();
     });
-    var header = ref();
+    var header = vue.ref();
     var headerHeight = useHeight(header, function () {
       return props.modelValue;
     });
-    var inputHeight = computed(function () {
+    var inputHeight = vue.computed(function () {
       return props.searchable && props.multiple && props.taggable ? '22px' : '0px';
     });
-    var headerAndInputHeight = computed(function () {
+    var headerAndInputHeight = vue.computed(function () {
       return parseFloat(headerHeight.value) + parseFloat(inputHeight.value) + 'px';
     }); // input
 
-    var searchingInputValue = ref('');
+    var searchingInputValue = vue.ref('');
 
     var handleInputForInput = function handleInputForInput(event) {
       context.emit('search:input', event, props);
@@ -723,16 +725,16 @@ var VueSelect = {
       blur();
     };
 
-    var searchRe = computed(function () {
+    var searchRe = vue.computed(function () {
       return new RegExp(searchingInputValue.value, 'i');
     });
-    var searchedOptions = computed(function () {
+    var searchedOptions = vue.computed(function () {
       return searchingInputValue.value ? options.value.filter(function (option) {
         return searchRe.value.test(labelBy.value(option));
       }) : undefined;
     }); // sync model value
 
-    var normalizedModelValue = ref([]);
+    var normalizedModelValue = vue.ref([]);
 
     var isSynchronoused = function isSynchronoused() {
       if (props.multiple) {
@@ -785,7 +787,7 @@ var VueSelect = {
     };
 
     syncFromModelValue();
-    watch(function () {
+    vue.watch(function () {
       return props.modelValue;
     }, function () {
       return syncFromModelValue();
@@ -806,7 +808,7 @@ var VueSelect = {
       }
     };
 
-    watch(function () {
+    vue.watch(function () {
       return normalizedModelValue;
     }, function () {
       return syncToModelValue();
@@ -814,7 +816,7 @@ var VueSelect = {
       deep: true
     }); // guarantee options has modelValue
 
-    watch(function () {
+    vue.watch(function () {
       return options.value;
     }, function () {
       var selectedValueSet = new Set(normalizedModelValue.value.map(function (option) {
@@ -920,13 +922,13 @@ var VueSelect = {
       inputEl.value.dispatchEvent(new Event('change'));
     };
 
-    var renderedOptions = computed(function () {
+    var renderedOptions = vue.computed(function () {
       var _ref, _props$visibleOptions;
 
       return (_ref = (_props$visibleOptions = props.visibleOptions) !== null && _props$visibleOptions !== void 0 ? _props$visibleOptions : searchedOptions.value) !== null && _ref !== void 0 ? _ref : options.value;
     });
-    var highlightedOriginalIndex = ref(0);
-    var optionsWithInfo = computed(function () {
+    var highlightedOriginalIndex = vue.ref(0);
+    var optionsWithInfo = vue.computed(function () {
       var selectedValueSet = new Set(normalizedModelValue.value.map(function (option) {
         return valueBy.value(option);
       }));
@@ -1000,13 +1002,13 @@ var VueSelect = {
     var pointerForward = function pointerForward() {
       _pointerForward.apply(void 0, arguments);
 
-      nextTick(updateScrollTop);
+      vue.nextTick(updateScrollTop);
     };
 
     var pointerBackward = function pointerBackward() {
       _pointerBackward.apply(void 0, arguments);
 
-      nextTick(updateScrollTop);
+      vue.nextTick(updateScrollTop);
     };
 
     var updateScrollTop = function updateScrollTop() {
@@ -1026,7 +1028,7 @@ var VueSelect = {
       }
     };
 
-    var dataAttrs = computed(function () {
+    var dataAttrs = vue.computed(function () {
       return {
         'data-initial-value': initialValue,
         'data-is-focusing': isFocusing.value,
@@ -1049,8 +1051,8 @@ var VueSelect = {
         'data-multiple': props.multiple
       };
     });
-    provide('dataAttrs', dataAttrs);
-    var innerPlaceholder = computed(function () {
+    vue.provide('dataAttrs', dataAttrs);
+    var innerPlaceholder = vue.computed(function () {
       var selectedOptions = optionsWithInfo.value.filter(function (option) {
         return option.selected;
       }).filter(function (option) {
@@ -1122,15 +1124,15 @@ var _hoisted_3 = {
   "class": "icon loading"
 };
 
-var _hoisted_4 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_4 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_5 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_6 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
@@ -1138,26 +1140,26 @@ var _hoisted_7 = {
   "class": "icon loading"
 };
 
-var _hoisted_8 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_8 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_9 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/createVNode("div", null, null, -1
+var _hoisted_10 = /*#__PURE__*/vue.createVNode("div", null, null, -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_v_tags = resolveComponent("v-tags");
+  var _component_v_tags = vue.resolveComponent("v-tags");
 
-  var _component_v_input = resolveComponent("v-input");
+  var _component_v_input = vue.resolveComponent("v-input");
 
-  var _component_v_dropdown = resolveComponent("v-dropdown");
+  var _component_v_dropdown = vue.resolveComponent("v-dropdown");
 
-  return openBlock(), createBlock("div", mergeProps({
+  return vue.openBlock(), vue.createBlock("div", vue.mergeProps({
     ref: "wrapper",
     "class": ["vue-select", {
       disabled: _ctx.disabled
@@ -1170,15 +1172,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.searchable ? false : _ctx.blur();
     })
   }, _ctx.dataAttrs, {
-    onKeypress: _cache[12] || (_cache[12] = withKeys(function () {
+    onKeypress: _cache[12] || (_cache[12] = vue.withKeys(function () {
       return _ctx.highlightedOriginalIndex !== null && _ctx.addOrRemoveOption(_ctx.$event, _ctx.optionsWithInfo[_ctx.highlightedOriginalIndex]);
     }, ["enter"])),
-    onKeydown: [_cache[13] || (_cache[13] = withKeys(withModifiers(function () {
+    onKeydown: [_cache[13] || (_cache[13] = vue.withKeys(vue.withModifiers(function () {
       return _ctx.pointerForward && _ctx.pointerForward.apply(_ctx, arguments);
-    }, ["prevent"]), ["down"])), _cache[14] || (_cache[14] = withKeys(withModifiers(function () {
+    }, ["prevent"]), ["down"])), _cache[14] || (_cache[14] = vue.withKeys(vue.withModifiers(function () {
       return _ctx.pointerBackward && _ctx.pointerBackward.apply(_ctx, arguments);
     }, ["prevent"]), ["up"]))]
-  }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
+  }), [vue.createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (vue.openBlock(), vue.createBlock("div", _hoisted_2, [vue.createVNode("input", {
     placeholder: _ctx.innerPlaceholder,
     "data-initial": _ctx.initialValue,
     name: _ctx.inputName,
@@ -1188,26 +1190,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
+  , ["placeholder", "data-initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
     key: 1
-  }, [createVNode(_component_v_tags, {
+  }, [vue.createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
     "collapse-tags": _ctx.collapseTags,
     tabindex: "-1",
     onClick: _ctx.focus
   }, {
-    "default": withCtx(function (_ref) {
+    "default": vue.withCtx(function (_ref) {
       var option = _ref.option;
-      return [renderSlot(_ctx.$slots, "tag", {
+      return [vue.renderSlot(_ctx.$slots, "tag", {
         option: option.originalOption
       }, function () {
-        return [createVNode("span", null, toDisplayString(option.label), 1
+        return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
         /* TEXT */
-        ), createVNode("img", {
+        ), vue.createVNode("img", {
           src: _imports_0,
           alt: "delete tag",
           "class": "icon delete",
-          onClick: withModifiers(function () {
+          onClick: vue.withModifiers(function () {
             return _ctx.addOrRemoveOption(_ctx.$event, option);
           }, ["prevent", "stop"])
         }, null, 8
@@ -1220,21 +1222,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "collapse-tags", "onClick"]), createVNode("span", {
+  , ["modelValue", "collapse-tags", "onClick"]), vue.createVNode("span", {
     "class": ["icon arrow-downward", {
       active: _ctx.isFocusing
     }],
     onClick: _cache[2] || (_cache[2] = function () {
       return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
     }),
-    onMousedown: _cache[3] || (_cache[3] = withModifiers(function () {}, ["prevent", "stop"]))
-  }, [renderSlot(_ctx.$slots, "icon")], 34
+    onMousedown: _cache[3] || (_cache[3] = vue.withModifiers(function () {}, ["prevent", "stop"]))
+  }, [vue.renderSlot(_ctx.$slots, "icon")], 34
   /* CLASS, HYDRATE_EVENTS */
   )], 64
   /* STABLE_FRAGMENT */
-  )) : (openBlock(), createBlock(Fragment, {
+  )) : (vue.openBlock(), vue.createBlock(vue.Fragment, {
     key: 2
-  }, [_ctx.searchable ? (openBlock(), createBlock(_component_v_input, {
+  }, [_ctx.searchable ? (vue.openBlock(), vue.createBlock(_component_v_input, {
     key: 0,
     ref: "input",
     modelValue: _ctx.searchingInputValue,
@@ -1254,23 +1256,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     tabindex: _ctx.tabindex
   }, null, 8
   /* PROPS */
-  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "autofocus", "tabindex"])) : createCommentVNode("v-if", true), withDirectives(createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
+  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "autofocus", "tabindex"])) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode("span", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6], 512
   /* NEED_PATCH */
-  ), [[vShow, _ctx.loading]]), withDirectives(createVNode("span", {
+  ), [[vue.vShow, _ctx.loading]]), vue.withDirectives(vue.createVNode("span", {
     "class": ["icon arrow-downward", {
       active: _ctx.isFocusing
     }],
     onClick: _cache[5] || (_cache[5] = function () {
       return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
     }),
-    onMousedown: _cache[6] || (_cache[6] = withModifiers(function () {}, ["prevent", "stop"]))
-  }, [renderSlot(_ctx.$slots, "icon")], 34
+    onMousedown: _cache[6] || (_cache[6] = vue.withModifiers(function () {}, ["prevent", "stop"]))
+  }, [vue.renderSlot(_ctx.$slots, "icon")], 34
   /* CLASS, HYDRATE_EVENTS */
-  ), [[vShow, _ctx.loading === false]])], 64
+  ), [[vue.vShow, _ctx.loading === false]])], 64
   /* STABLE_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), _ctx.multiple && _ctx.taggable && _ctx.searchable ? withDirectives((openBlock(), createBlock(_component_v_input, {
+  ), _ctx.multiple && _ctx.taggable && _ctx.searchable ? vue.withDirectives((vue.openBlock(), vue.createBlock(_component_v_input, {
     key: 0,
     ref: "input",
     modelValue: _ctx.searchingInputValue,
@@ -1289,17 +1291,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     tabindex: _ctx.tabindex,
     autofocus: _ctx.autofocus || _ctx.taggable && _ctx.searchable
   }, {
-    append: withCtx(function () {
-      return [withDirectives(createVNode("span", _hoisted_7, [_hoisted_8, _hoisted_9, _hoisted_10], 512
+    append: vue.withCtx(function () {
+      return [vue.withDirectives(vue.createVNode("span", _hoisted_7, [_hoisted_8, _hoisted_9, _hoisted_10], 512
       /* NEED_PATCH */
-      ), [[vShow, _ctx.loading]])];
+      ), [[vue.vShow, _ctx.loading]])];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "tabindex", "autofocus"])), [[vShow, _ctx.isFocusing]]) : createCommentVNode("v-if", true), withDirectives(createVNode(_component_v_dropdown, {
+  , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "tabindex", "autofocus"])), [[vue.vShow, _ctx.isFocusing]]) : vue.createCommentVNode("v-if", true), vue.withDirectives(vue.createVNode(_component_v_dropdown, {
     ref: "dropdown",
     modelValue: _ctx.optionsWithInfo,
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
@@ -1311,12 +1313,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "header-height": _ctx.headerAndInputHeight
   }, {
-    "default": withCtx(function (_ref2) {
+    "default": vue.withCtx(function (_ref2) {
       var option = _ref2.option;
-      return [renderSlot(_ctx.$slots, "dropdown-item", {
+      return [vue.renderSlot(_ctx.$slots, "dropdown-item", {
         option: option.originalOption
       }, function () {
-        return [createVNode("span", null, toDisplayString(option.label), 1
+        return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
         /* TEXT */
         )];
       })];
@@ -1326,7 +1328,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]])], 16
+  , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]])], 16
   /* FULL_PROPS */
   , ["tabindex"]);
 }
@@ -1334,4 +1336,4 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 VueSelect.render = render;
 VueSelect.__file = "src/index.vue";
 
-export default VueSelect;
+module.exports = VueSelect;
