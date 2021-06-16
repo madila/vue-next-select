@@ -17,6 +17,7 @@
     />
     <slot name="append"></slot>
   </div>
+  <slot name="results"></slot>
 </template>
 
 <script>

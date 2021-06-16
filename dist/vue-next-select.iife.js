@@ -170,7 +170,7 @@ this.VueNextSelect = (function (vue) {
     "class": "vue-input"
   };
   function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createBlock("div", _hoisted_1$1, [vue.renderSlot(_ctx.$slots, "prepend"), vue.createVNode("input", {
+    return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$1, [vue.renderSlot(_ctx.$slots, "prepend"), vue.createVNode("input", {
       ref: "input",
       modelValue: $props.modelValue,
       placeholder: $props.placeholder,
@@ -195,7 +195,9 @@ this.VueNextSelect = (function (vue) {
       autofocus: $props.autofocus
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
-    , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]);
+    , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]), vue.renderSlot(_ctx.$slots, "results")], 64
+    /* STABLE_FRAGMENT */
+    );
   }
 
   script$2.render = render$3;

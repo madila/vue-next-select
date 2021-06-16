@@ -1,4 +1,4 @@
-import { ref, onMounted, onUpdated, openBlock, createBlock, renderSlot, createVNode, withKeys, withModifiers, inject, mergeProps, Fragment, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
+import { ref, onMounted, onUpdated, openBlock, createBlock, Fragment, createVNode, renderSlot, withKeys, withModifiers, inject, mergeProps, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -169,7 +169,7 @@ var _hoisted_1$1 = {
   "class": "vue-input"
 };
 function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock("div", _hoisted_1$1, [renderSlot(_ctx.$slots, "prepend"), createVNode("input", {
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$1, [renderSlot(_ctx.$slots, "prepend"), createVNode("input", {
     ref: "input",
     modelValue: $props.modelValue,
     placeholder: $props.placeholder,
@@ -194,7 +194,9 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     autofocus: $props.autofocus
   }, null, 40
   /* PROPS, HYDRATE_EVENTS */
-  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]);
+  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]), renderSlot(_ctx.$slots, "results")], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 script$2.render = render$3;
