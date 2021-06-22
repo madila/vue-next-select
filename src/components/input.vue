@@ -2,20 +2,20 @@
   <div class="vue-input">
     <slot name="prepend"></slot>
     <input
-      ref="input"
-      :modelValue="modelValue"
-      :placeholder="placeholder"
-      :disabled="disabled"
-      @input="handleInput"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @keyup.esc.exact="handleEscape"
-      :tabindex="tabindex"
-      :autofocus="autofocus"
-      aria-autocomplete="list"
-      :aria-controls="`vs${comboboxUid}-listbox`"
-      :aria-labelledby="`vs${comboboxUid}-combobox`"
+        ref="input"
+        :modelValue="modelValue"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        @input="handleInput"
+        @change="handleChange"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @keyup.esc.exact="handleEscape"
+        :tabindex="tabindex"
+        :autofocus="autofocus"
+        aria-autocomplete="list"
+        :aria-controls="`vs${comboboxUid}-listbox`"
+        :aria-labelledby="`vs${comboboxUid}-combobox`"
     />
     <slot name="append"></slot>
   </div>
