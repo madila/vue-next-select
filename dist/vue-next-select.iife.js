@@ -170,7 +170,7 @@ this.VueNextSelect = (function (vue) {
     "class": "vue-input"
   };
   function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createBlock(vue.Fragment, null, [vue.createVNode("div", _hoisted_1$1, [vue.renderSlot(_ctx.$slots, "prepend"), vue.createVNode("input", {
+    return vue.openBlock(), vue.createBlock("div", _hoisted_1$1, [vue.renderSlot(_ctx.$slots, "prepend"), vue.createVNode("input", {
       ref: "input",
       modelValue: $props.modelValue,
       placeholder: $props.placeholder,
@@ -195,9 +195,7 @@ this.VueNextSelect = (function (vue) {
       autofocus: $props.autofocus
     }, null, 40
     /* PROPS, HYDRATE_EVENTS */
-    , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]), vue.renderSlot(_ctx.$slots, "results")], 64
-    /* STABLE_FRAGMENT */
-    );
+    , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), vue.renderSlot(_ctx.$slots, "append")]);
   }
 
   script$2.render = render$3;
@@ -1329,7 +1327,38 @@ this.VueNextSelect = (function (vue) {
 
     }, 8
     /* PROPS */
-    , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]])], 16
+    , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]]), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(_component_v_tags, {
+      key: 1,
+      modelValue: _ctx.optionsWithInfo,
+      "collapse-tags": _ctx.collapseTags,
+      tabindex: "-1",
+      onClick: _ctx.focus
+    }, {
+      "default": vue.withCtx(function (_ref3) {
+        var option = _ref3.option;
+        return [vue.renderSlot(_ctx.$slots, "tag", {
+          option: option.originalOption
+        }, function () {
+          return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
+          /* TEXT */
+          ), vue.createVNode("img", {
+            src: _imports_0,
+            alt: "delete tag",
+            "class": "icon delete",
+            onClick: vue.withModifiers(function () {
+              return _ctx.addOrRemoveOption(_ctx.$event, option);
+            }, ["prevent", "stop"])
+          }, null, 8
+          /* PROPS */
+          , ["onClick"])];
+        })];
+      }),
+      _: 1
+      /* STABLE */
+
+    }, 8
+    /* PROPS */
+    , ["modelValue", "collapse-tags", "onClick"])) : vue.createCommentVNode("v-if", true)], 16
     /* FULL_PROPS */
     , ["tabindex"]);
   }

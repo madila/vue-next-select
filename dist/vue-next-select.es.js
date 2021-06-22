@@ -1,4 +1,4 @@
-import { ref, onMounted, onUpdated, openBlock, createBlock, Fragment, createVNode, renderSlot, withKeys, withModifiers, inject, mergeProps, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
+import { ref, onMounted, onUpdated, openBlock, createBlock, renderSlot, createVNode, withKeys, withModifiers, inject, mergeProps, Fragment, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -169,7 +169,7 @@ var _hoisted_1$1 = {
   "class": "vue-input"
 };
 function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(Fragment, null, [createVNode("div", _hoisted_1$1, [renderSlot(_ctx.$slots, "prepend"), createVNode("input", {
+  return openBlock(), createBlock("div", _hoisted_1$1, [renderSlot(_ctx.$slots, "prepend"), createVNode("input", {
     ref: "input",
     modelValue: $props.modelValue,
     placeholder: $props.placeholder,
@@ -194,9 +194,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
     autofocus: $props.autofocus
   }, null, 40
   /* PROPS, HYDRATE_EVENTS */
-  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]), renderSlot(_ctx.$slots, "results")], 64
-  /* STABLE_FRAGMENT */
-  );
+  , ["modelValue", "placeholder", "disabled", "name", "tabindex", "autofocus"]), renderSlot(_ctx.$slots, "append")]);
 }
 
 script$2.render = render$3;
@@ -1328,7 +1326,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]])], 16
+  , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]]), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(_component_v_tags, {
+    key: 1,
+    modelValue: _ctx.optionsWithInfo,
+    "collapse-tags": _ctx.collapseTags,
+    tabindex: "-1",
+    onClick: _ctx.focus
+  }, {
+    "default": withCtx(function (_ref3) {
+      var option = _ref3.option;
+      return [renderSlot(_ctx.$slots, "tag", {
+        option: option.originalOption
+      }, function () {
+        return [createVNode("span", null, toDisplayString(option.label), 1
+        /* TEXT */
+        ), createVNode("img", {
+          src: _imports_0,
+          alt: "delete tag",
+          "class": "icon delete",
+          onClick: withModifiers(function () {
+            return _ctx.addOrRemoveOption(_ctx.$event, option);
+          }, ["prevent", "stop"])
+        }, null, 8
+        /* PROPS */
+        , ["onClick"])];
+      })];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["modelValue", "collapse-tags", "onClick"])) : createCommentVNode("v-if", true)], 16
   /* FULL_PROPS */
   , ["tabindex"]);
 }

@@ -122,6 +122,22 @@
         </slot>
       </template>
     </v-dropdown>
+
+    <template v-if="multiple && taggable">
+      <v-tags :modelValue="optionsWithInfo" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
+        <template #default="{ option }">
+          <slot name="tag" :option="option.originalOption">
+            <span>{{ option.label }}</span>
+            <img
+                src="./images/delete.svg"
+                alt="delete tag"
+                class="icon delete"
+                @click.prevent.stop="() => addOrRemoveOption($event, option)"
+            />
+          </slot>
+        </template>
+      </v-tags>
+    </template>
   </div>
 </template>
 
