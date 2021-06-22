@@ -1152,13 +1152,13 @@ this.VueNextSelect = (function (vue) {
   );
 
   function render(_ctx, _cache, $props, $setup, $data, $options) {
+    var _component_v_tags = vue.resolveComponent("v-tags");
+
     var _component_v_input = vue.resolveComponent("v-input");
 
     var _component_v_dropdown = vue.resolveComponent("v-dropdown");
 
-    var _component_v_tags = vue.resolveComponent("v-tags");
-
-    return vue.openBlock(), vue.createBlock("div", null, [vue.createVNode("div", vue.mergeProps({
+    return vue.openBlock(), vue.createBlock("div", vue.mergeProps({
       ref: "wrapper",
       "class": ["vue-select", {
         disabled: _ctx.disabled
@@ -1189,8 +1189,39 @@ this.VueNextSelect = (function (vue) {
       })
     }, null, 8
     /* PROPS */
-    , ["placeholder", "data-initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock("span", {
-      key: 1,
+    , ["placeholder", "data-initial", "name"])])) : vue.createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(vue.Fragment, {
+      key: 1
+    }, [vue.createVNode(_component_v_tags, {
+      modelValue: _ctx.optionsWithInfo,
+      "collapse-tags": _ctx.collapseTags,
+      tabindex: "-1",
+      onClick: _ctx.focus
+    }, {
+      "default": vue.withCtx(function (_ref) {
+        var option = _ref.option;
+        return [vue.renderSlot(_ctx.$slots, "tag", {
+          option: option.originalOption
+        }, function () {
+          return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
+          /* TEXT */
+          ), vue.createVNode("img", {
+            src: _imports_0,
+            alt: "delete tag",
+            "class": "icon delete",
+            onClick: vue.withModifiers(function () {
+              return _ctx.addOrRemoveOption(_ctx.$event, option);
+            }, ["prevent", "stop"])
+          }, null, 8
+          /* PROPS */
+          , ["onClick"])];
+        })];
+      }),
+      _: 1
+      /* STABLE */
+
+    }, 8
+    /* PROPS */
+    , ["modelValue", "collapse-tags", "onClick"]), vue.createVNode("span", {
       "class": ["icon arrow-downward", {
         active: _ctx.isFocusing
       }],
@@ -1200,6 +1231,8 @@ this.VueNextSelect = (function (vue) {
       onMousedown: _cache[3] || (_cache[3] = vue.withModifiers(function () {}, ["prevent", "stop"]))
     }, [vue.renderSlot(_ctx.$slots, "icon")], 34
     /* CLASS, HYDRATE_EVENTS */
+    )], 64
+    /* STABLE_FRAGMENT */
     )) : (vue.openBlock(), vue.createBlock(vue.Fragment, {
       key: 2
     }, [_ctx.searchable ? (vue.openBlock(), vue.createBlock(_component_v_input, {
@@ -1279,8 +1312,8 @@ this.VueNextSelect = (function (vue) {
       }),
       "header-height": _ctx.headerAndInputHeight
     }, {
-      "default": vue.withCtx(function (_ref) {
-        var option = _ref.option;
+      "default": vue.withCtx(function (_ref2) {
+        var option = _ref2.option;
         return [vue.renderSlot(_ctx.$slots, "dropdown-item", {
           option: option.originalOption
         }, function () {
@@ -1296,38 +1329,7 @@ this.VueNextSelect = (function (vue) {
     /* PROPS */
     , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]])], 16
     /* FULL_PROPS */
-    , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock(_component_v_tags, {
-      key: 0,
-      modelValue: _ctx.modelValue,
-      "collapse-tags": _ctx.collapseTags,
-      tabindex: "-1",
-      onClick: _ctx.focus
-    }, {
-      "default": vue.withCtx(function (_ref2) {
-        var option = _ref2.option;
-        return [vue.renderSlot(_ctx.$slots, "tag", {
-          option: option.originalOption
-        }, function () {
-          return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
-          /* TEXT */
-          ), vue.createVNode("img", {
-            src: _imports_0,
-            alt: "delete tag",
-            "class": "icon delete",
-            onClick: vue.withModifiers(function () {
-              return _ctx.addOrRemoveOption(_ctx.$event, option);
-            }, ["prevent", "stop"])
-          }, null, 8
-          /* PROPS */
-          , ["onClick"])];
-        })];
-      }),
-      _: 1
-      /* STABLE */
-
-    }, 8
-    /* PROPS */
-    , ["modelValue", "collapse-tags", "onClick"])) : vue.createCommentVNode("v-if", true)]);
+    , ["tabindex"]);
   }
 
   VueSelect.render = render;
