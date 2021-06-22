@@ -103,9 +103,9 @@
 
   <template v-if="multiple && taggable">
     <div class="tag-wrapper">
-      <v-tags :modelValue="searchingInputValue" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
+      <v-tags :modelValue="modelValue" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
         <template #default="{ option }">
-          <slot name="tag" :option="option.originalOption">
+          <slot name="tag" :option="option">
             <span>{{ option.label }}</span>
             <img
                 src="./images/delete.svg"

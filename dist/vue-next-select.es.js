@@ -1285,7 +1285,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]])], 16
   /* FULL_PROPS */
   , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock("div", _hoisted_11, [createVNode(_component_v_tags, {
-    modelValue: _ctx.searchingInputValue,
+    modelValue: _ctx.modelValue,
     "collapse-tags": _ctx.collapseTags,
     tabindex: "-1",
     onClick: _ctx.focus
@@ -1293,7 +1293,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": withCtx(function (_ref2) {
       var option = _ref2.option;
       return [renderSlot(_ctx.$slots, "tag", {
-        option: option.originalOption
+        option: option
       }, function () {
         return [createVNode("span", null, toDisplayString(option.label), 1
         /* TEXT */

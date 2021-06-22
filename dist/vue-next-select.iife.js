@@ -1286,7 +1286,7 @@ this.VueNextSelect = (function (vue) {
     , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]])], 16
     /* FULL_PROPS */
     , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock("div", _hoisted_11, [vue.createVNode(_component_v_tags, {
-      modelValue: _ctx.searchingInputValue,
+      modelValue: _ctx.modelValue,
       "collapse-tags": _ctx.collapseTags,
       tabindex: "-1",
       onClick: _ctx.focus
@@ -1294,7 +1294,7 @@ this.VueNextSelect = (function (vue) {
       "default": vue.withCtx(function (_ref2) {
         var option = _ref2.option;
         return [vue.renderSlot(_ctx.$slots, "tag", {
-          option: option.originalOption
+          option: option
         }, function () {
           return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
           /* TEXT */
