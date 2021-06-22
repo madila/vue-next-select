@@ -1285,7 +1285,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]])], 16
   /* FULL_PROPS */
   , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock("div", _hoisted_11, [createVNode(_component_v_tags, {
-    modelValue: _ctx.optionsWithInfo,
+    modelValue: _ctx.searchingInputValue,
     "collapse-tags": _ctx.collapseTags,
     tabindex: "-1",
     onClick: _ctx.focus

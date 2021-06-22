@@ -103,7 +103,7 @@
 
   <template v-if="multiple && taggable">
     <div class="tag-wrapper">
-      <v-tags :modelValue="optionsWithInfo" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
+      <v-tags :modelValue="searchingInputValue" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
         <template #default="{ option }">
           <slot name="tag" :option="option.originalOption">
             <span>{{ option.label }}</span>

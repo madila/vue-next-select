@@ -1286,7 +1286,7 @@ this.VueNextSelect = (function (vue) {
     , ["modelValue", "onClickItem", "header-height"]), [[vue.vShow, _ctx.isFocusing]])], 16
     /* FULL_PROPS */
     , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (vue.openBlock(), vue.createBlock("div", _hoisted_11, [vue.createVNode(_component_v_tags, {
-      modelValue: _ctx.optionsWithInfo,
+      modelValue: _ctx.searchingInputValue,
       "collapse-tags": _ctx.collapseTags,
       tabindex: "-1",
       onClick: _ctx.focus
