@@ -1,4 +1,4 @@
-import { ref, onMounted, onUpdated, openBlock, createBlock, renderSlot, createVNode, withKeys, withModifiers, inject, mergeProps, Fragment, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withCtx, withDirectives, vShow } from 'vue';
+import { ref, onMounted, onUpdated, openBlock, createBlock, renderSlot, createVNode, withKeys, withModifiers, inject, mergeProps, Fragment, renderList, toDisplayString, createCommentVNode, toRef, computed, isRef, isReactive, watch, watchEffect, nextTick, getCurrentInstance, provide, resolveComponent, withDirectives, vShow, withCtx } from 'vue';
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -1151,34 +1151,35 @@ var _hoisted_10 = /*#__PURE__*/createVNode("div", null, null, -1
 );
 
 var _hoisted_11 = {
-  key: 1
+  key: 0,
+  "class": "tag-wrapper"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_v_tags = resolveComponent("v-tags");
-
   var _component_v_input = resolveComponent("v-input");
 
   var _component_v_dropdown = resolveComponent("v-dropdown");
 
-  return openBlock(), createBlock("div", mergeProps({
+  var _component_v_tags = resolveComponent("v-tags");
+
+  return openBlock(), createBlock(Fragment, null, [createVNode("div", mergeProps({
     ref: "wrapper",
     "class": ["vue-select", {
       disabled: _ctx.disabled
     }],
     tabindex: _ctx.isFocusing ? -1 : _ctx.tabindex,
-    onFocus: _cache[10] || (_cache[10] = function () {
+    onFocus: _cache[8] || (_cache[8] = function () {
       return _ctx.focus && _ctx.focus.apply(_ctx, arguments);
     }),
-    onBlur: _cache[11] || (_cache[11] = function () {
+    onBlur: _cache[9] || (_cache[9] = function () {
       return _ctx.searchable ? false : _ctx.blur();
     })
   }, _ctx.dataAttrs, {
-    onKeypress: _cache[12] || (_cache[12] = withKeys(function () {
+    onKeypress: _cache[10] || (_cache[10] = withKeys(function () {
       return _ctx.highlightedOriginalIndex !== null && _ctx.addOrRemoveOption(_ctx.$event, _ctx.optionsWithInfo[_ctx.highlightedOriginalIndex]);
     }, ["enter"])),
-    onKeydown: [_cache[13] || (_cache[13] = withKeys(withModifiers(function () {
+    onKeydown: [_cache[11] || (_cache[11] = withKeys(withModifiers(function () {
       return _ctx.pointerForward && _ctx.pointerForward.apply(_ctx, arguments);
-    }, ["prevent"]), ["down"])), _cache[14] || (_cache[14] = withKeys(withModifiers(function () {
+    }, ["prevent"]), ["down"])), _cache[12] || (_cache[12] = withKeys(withModifiers(function () {
       return _ctx.pointerBackward && _ctx.pointerBackward.apply(_ctx, arguments);
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
@@ -1191,57 +1192,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
-    key: 1
-  }, [createVNode(_component_v_tags, {
-    modelValue: _ctx.optionsWithInfo,
-    "collapse-tags": _ctx.collapseTags,
-    tabindex: "-1",
-    onClick: _ctx.focus
-  }, {
-    "default": withCtx(function (_ref) {
-      var option = _ref.option;
-      return [renderSlot(_ctx.$slots, "tag", {
-        option: option.originalOption
-      }, function () {
-        return [createVNode("span", null, toDisplayString(option.label), 1
-        /* TEXT */
-        ), createVNode("img", {
-          src: _imports_0,
-          alt: "delete tag",
-          "class": "icon delete",
-          onClick: withModifiers(function () {
-            return _ctx.addOrRemoveOption(_ctx.$event, option);
-          }, ["prevent", "stop"])
-        }, null, 8
-        /* PROPS */
-        , ["onClick"])];
-      })];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["modelValue", "collapse-tags", "onClick"]), createVNode("span", {
-    "class": ["icon arrow-downward", {
-      active: _ctx.isFocusing
-    }],
-    onClick: _cache[2] || (_cache[2] = function () {
-      return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
-    }),
-    onMousedown: _cache[3] || (_cache[3] = withModifiers(function () {}, ["prevent", "stop"]))
-  }, [renderSlot(_ctx.$slots, "icon")], 34
-  /* CLASS, HYDRATE_EVENTS */
-  )], 64
-  /* STABLE_FRAGMENT */
-  )) : (openBlock(), createBlock(Fragment, {
-    key: 2
-  }, [_ctx.searchable ? (openBlock(), createBlock(_component_v_input, {
+  , ["placeholder", "data-initial", "name"])])) : createCommentVNode("v-if", true), createVNode("template", null, [_ctx.searchable ? (openBlock(), createBlock(_component_v_input, {
     key: 0,
     ref: "input",
     modelValue: _ctx.searchingInputValue,
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return _ctx.searchingInputValue = $event;
     }),
     disabled: _ctx.disabled,
@@ -1263,21 +1218,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": ["icon arrow-downward", {
       active: _ctx.isFocusing
     }],
-    onClick: _cache[5] || (_cache[5] = function () {
+    onClick: _cache[3] || (_cache[3] = function () {
       return _ctx.toggle && _ctx.toggle.apply(_ctx, arguments);
     }),
-    onMousedown: _cache[6] || (_cache[6] = withModifiers(function () {}, ["prevent", "stop"]))
+    onMousedown: _cache[4] || (_cache[4] = withModifiers(function () {}, ["prevent", "stop"]))
   }, [renderSlot(_ctx.$slots, "icon")], 34
   /* CLASS, HYDRATE_EVENTS */
-  ), [[vShow, _ctx.loading === false]])], 64
-  /* STABLE_FRAGMENT */
-  ))], 512
+  ), [[vShow, _ctx.loading === false]])])], 512
   /* NEED_PATCH */
   ), _ctx.multiple && _ctx.taggable && _ctx.searchable ? withDirectives((openBlock(), createBlock(_component_v_input, {
     key: 0,
     ref: "input",
     modelValue: _ctx.searchingInputValue,
-    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return _ctx.searchingInputValue = $event;
     }),
     disabled: _ctx.disabled,
@@ -1305,17 +1258,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "disabled", "placeholder", "onInput", "onChange", "onFocus", "onBlur", "onEscape", "input-name", "data-initial", "tabindex", "autofocus"])), [[vShow, _ctx.isFocusing]]) : createCommentVNode("v-if", true), withDirectives(createVNode(_component_v_dropdown, {
     ref: "dropdown",
     modelValue: _ctx.optionsWithInfo,
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return _ctx.optionsWithInfo = $event;
     }),
     onClickItem: _ctx.addOrRemoveOption,
-    onMousemove: _cache[9] || (_cache[9] = function (ev, option) {
+    onMousemove: _cache[7] || (_cache[7] = function (ev, option) {
       return _ctx.pointerSet(option.originalIndex);
     }),
     "header-height": _ctx.headerAndInputHeight
   }, {
-    "default": withCtx(function (_ref2) {
-      var option = _ref2.option;
+    "default": withCtx(function (_ref) {
+      var option = _ref.option;
       return [renderSlot(_ctx.$slots, "dropdown-item", {
         option: option.originalOption
       }, function () {
@@ -1329,14 +1282,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]]), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock("div", _hoisted_11, [createVNode(_component_v_tags, {
+  , ["modelValue", "onClickItem", "header-height"]), [[vShow, _ctx.isFocusing]])], 16
+  /* FULL_PROPS */
+  , ["tabindex"]), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock("div", _hoisted_11, [createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
     "collapse-tags": _ctx.collapseTags,
     tabindex: "-1",
     onClick: _ctx.focus
   }, {
-    "default": withCtx(function (_ref3) {
-      var option = _ref3.option;
+    "default": withCtx(function (_ref2) {
+      var option = _ref2.option;
       return [renderSlot(_ctx.$slots, "tag", {
         option: option.originalOption
       }, function () {
@@ -1359,9 +1314,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["modelValue", "collapse-tags", "onClick"])])) : createCommentVNode("v-if", true)], 16
-  /* FULL_PROPS */
-  , ["tabindex"]);
+  , ["modelValue", "collapse-tags", "onClick"])])) : createCommentVNode("v-if", true)], 64
+  /* STABLE_FRAGMENT */
+  );
 }
 
 VueSelect.render = render;
