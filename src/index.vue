@@ -21,7 +21,7 @@
     aria-haspopup="listbox"
     :aria-owns="`vs${instance.uid}-listbox`"
     :aria-activedescendant="
-      highlightedOriginalIndex === null ? null : `vs${instance.uid}-option-${highlightedOriginalIndex}`
+     highlightedOriginalIndex === null ? null : `vs${instance.uid}-option-${highlightedOriginalIndex}`
     "
     :aria-busy="loading"
     :aria-disabled="disabled"

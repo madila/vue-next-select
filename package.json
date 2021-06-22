@@ -37,7 +37,7 @@
     "test:jest": "jest --clearCache && jest test/**/*",
     "release": "standard-version",
     "lint": "prettier --check *",
-    "postinstall": "husky install",
+    "_postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },
