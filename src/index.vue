@@ -123,7 +123,7 @@
       </template>
     </v-dropdown>
 
-    <template v-if="multiple && taggable">
+    <div v-if="multiple && taggable">
       <v-tags :modelValue="optionsWithInfo" :collapse-tags="collapseTags" tabindex="-1" @click="focus">
         <template #default="{ option }">
           <slot name="tag" :option="option.originalOption">
@@ -137,7 +137,7 @@
           </slot>
         </template>
       </v-tags>
-    </template>
+    </div>
   </div>
 </template>
 
