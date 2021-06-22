@@ -1201,7 +1201,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": vue.withCtx(function (_ref) {
       var option = _ref.option;
       return [vue.renderSlot(_ctx.$slots, "tag", {
-        option: option.originalOption
+        option: option
       }, function () {
         return [vue.createVNode("span", null, vue.toDisplayString(option.label), 1
         /* TEXT */

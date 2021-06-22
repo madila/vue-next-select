@@ -1199,7 +1199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": withCtx(function (_ref) {
       var option = _ref.option;
       return [renderSlot(_ctx.$slots, "tag", {
-        option: option.originalOption
+        option: option
       }, function () {
         return [createVNode("span", null, toDisplayString(option.label), 1
         /* TEXT */
