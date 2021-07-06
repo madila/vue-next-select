@@ -1180,7 +1180,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]), ["up"]))]
   }), [createVNode("div", _hoisted_1, [_ctx.multiple && _ctx.taggable && _ctx.modelValue.length === 0 || _ctx.searchable === false && _ctx.taggable === false ? (openBlock(), createBlock("div", _hoisted_2, [createVNode("input", {
     placeholder: _ctx.innerPlaceholder,
-    value: _ctx.modelValue,
     "data-initial": _ctx.initialValue,
     name: _ctx.inputName,
     readonly: "",
@@ -1189,7 +1188,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 8
   /* PROPS */
-  , ["placeholder", "value", "data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
+  , ["placeholder", "data-initial", "name"])])) : createCommentVNode("v-if", true), _ctx.multiple && _ctx.taggable ? (openBlock(), createBlock(Fragment, {
     key: 1
   }, [createVNode(_component_v_tags, {
     modelValue: _ctx.optionsWithInfo,
